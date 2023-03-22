@@ -6,18 +6,10 @@
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <!-- Author -->
-    <meta name="author" content="Themes Industry">
-    <!-- description -->
-    <meta name="description"
-        content="MegaOne is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose studio and portfolio HTML5 template with 8 ready home page demos.">
-    <!-- keywords -->
-    <meta name="keywords"
-        content="Creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, studio, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, studio, masonry, grid, faq">
     <!-- Page Title -->
-    <title>Priyanshu's Portfolio Website</title>
+    <title>{{data.name}}'s Portfolio Website</title>
     <!-- Favicon -->
-    <link href="{% static data.img %}" rel="icon">
+    <link href="{{data.icon}}" rel="icon">
     <!-- Bundle -->
     <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -26,7 +18,6 @@
     <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
-
     <!-- Style Sheet -->
     <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
@@ -119,12 +110,12 @@
                     <ul class="social-icons-simple">
                         <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
                             </a> </li>
-                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-instagram-original"></i>
+                        <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i>
                             </a> </li>
                         <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a> </li>
                         <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a> </li>
                     </ul>
-                    <p>&copy; Animation Coding</p>
+                    <p>&copy; {{data.name}}</p>
                 </div>
             </div>
         </div>
@@ -140,16 +131,14 @@
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-6 image-order">
                         <div class="slider-image">
-                            <img src="{% static data.img %}" alt="Slider-Image">
+                            <img src="{{data.logo}}" alt="Slider-Image">
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 text-md-center text-lg-left">
                         <div class="slider-content">
                             <h1 class="main-font text-uppercase"><span class="slider-text px-2"> Hello, I am </span>
-                                <span class="d-block text-yellow"> web designer.</span></h1>
-                            <p class="pt-3 alt-font content-para">Lorem ipsum is simply dummy text of the printing and
-                                typesetting. Lorem Ipsum has been the industry’s standard dummy. Lorem Ipsum has been
-                                the industry’s standard dummy.</p>
+                                <span class="d-block text-yellow"> {{data.work_title}}.</span></h1>
+                            <p class="pt-3 alt-font content-para">{{data.work_desc}}</p>
                         </div>
                     </div>
                 </div>
@@ -202,12 +191,11 @@
             <div class="container">
                 <div class="row pb-5">
                     <div class="col-12 col-md-7 pl-md-0">
-                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> Product Designer &
-                            </span> <span> Digital Creative Director </span></h3>
-                        <p class="py-2 alt-font">Specialized in UI/UX, Branding and digital designs.</p>
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> {{data.work}}</span></h3>
+                        <p class="py-2 alt-font">{{data.work_desc}}</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">12+</h2>
+                        <h2 class="m-0 text-yellow main-font">{{data.experience_years}}+</h2>
                         <p class="alt-font">Years of Experience</p>
                     </div>
                 </div>
@@ -245,33 +233,33 @@
                         <ul class="progress-bar-side">
                             <!-- First Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{talent_1_title}}<span class="float-right"><b
-                                            class="numscroller">{{talent_1_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_1_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_1_perc}}</b>%</span></h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="96"
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_1_perc}}"
                                         aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </li>
                             <!-- Second Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{talent_2_title}}<span class="float-right"><b
-                                            class="numscroller">{{talent_2_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_2_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_2_perc}}</b>%</span></h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="92"
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_2_perc}}"
                                         aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </li>
                             <!-- Third Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{talent_3_title}}<span class="float-right"><b
-                                            class="numscroller">{{talent_3_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_3_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_3_perc}}</b>%</span></h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="90"
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_3_perc}}"
                                         aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
@@ -293,7 +281,7 @@
                         <p class="py-2 alt-font">Please look what I have done so far in my life.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">29</h2>
+                        <h2 class="m-0 text-yellow main-font">{{data.age}}</h2>
                         <p class="alt-font">Years Old</p>
                     </div>
                 </div>
@@ -306,8 +294,7 @@
                                     <!-- Events -->
                                     <div class="events" style="width: 2200px;">
                                         <ol>
-                                            <li><a href="#" data-date="16/01/2017" class="older-event selected">2001</a>
-                                            </li>
+                                            <li><a href="#" data-date="16/01/2017" class="older-event selected">2001</a></li>
                                             <li><a href="#" data-date="28/02/2017" style="left: 200px;">2005</a></li>
                                             <li><a href="#" data-date="20/04/2017" style="left: 200px;">2007</a></li>
                                             <li><a href="#" data-date="20/05/2017" style="left: 200px;">2009</a></li>
@@ -952,8 +939,8 @@
                         <p class="py-2 alt-font">I am available all the time for any project acording to my skills.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font font-weight-bold">{{data.about.skype_id}}</h2>
-                        <p class="alt-font">My Skype ID</p>
+                        <h2 class="m-0 text-yellow main-font font-weight-bold">{{data.insta_ID}}</h2>
+                        <p class="alt-font">My Instagram ID</p>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form-data">
@@ -1006,7 +993,7 @@
         <div class="slider-footer w-auto">
             <ul class="social-icons-simple">
                 <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a> </li>
-                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-instagram-original"></i> </a>
+                <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
                 </li>
                 <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a> </li>
                 <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>

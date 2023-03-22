@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Author -->
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description"
+        content="MegaOne is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose studio and portfolio HTML5 template with 8 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords"
+        content="Creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, studio, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, studio, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Priyanshu's Portfolio Website</title>
+    <!-- Favicon -->
+    <link href="{% static data.img %}" rel="icon">
+    <!-- Bundle -->
+    <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <!-- Plugin Css -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+
+    <!-- Style Sheet -->
+    <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.pagepiling.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        input[type="file"]{
+            color: #fff;
+        }
+        input:focus-within[type="file"]{
+            color: #fff;
+        }
+        input {
+            color: #000;
+        }
+        input:focus-within {
+            color: #000;
+        }
+        form{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+        .abcd{
+            overflow: auto;
+            height: 70vh;
+        }
+        .xyz{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+    <!-- START HEADER -->
+    <header>
+        <!--Navigation-->
+        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <a href="{% url 'index' %}" title="Logo" class="logo">
+                <!--Logo Default-->
+                <div class="mega-logo">
+                    <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+                </div>
+            </a>
+
+            <!--Side Menu Button-->
+            <div class="navigation-toggle">
+                <ul class="slider-social toggle-btn my-0">
+                    <li>
+                        <a href="javascript:void(0);" class="sidemenu_btn" id="sidemenu_toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Side Nav-->
+        <div class="side-menu hidden">
+            <span id="btn_sideNavClose">
+                <i class="lni lni-plus btn-close"></i>
+            </span>
+            <div class="inner-wrapper">
+                <nav class="side-nav w-100">
+                    <a href="{% url 'index' %}" title="Logo" class="logo navbar-brand">
+                        <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
+                    </a>
+                    <ul class="navbar-nav text-capitalize">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#timeline">Timeline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonial">Testimonials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="text-center sidebar_btn">
+                        <a href="personal-hotspot/download-resume/resume.pdf" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
+                    </div>
+                </nav>
+
+                <div class="side-footer w-100">
+                    <ul class="social-icons-simple">
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
+                            </a> </li>
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-instagram-original"></i>
+                            </a> </li>
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a> </li>
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a> </li>
+                    </ul>
+                    <p>&copy; Animation Coding</p>
+                </div>
+            </div>
+        </div>
+        <a id="close_side_menu" href="javascript:void(0);"></a>
+    </header>
+    <!-- END HEADER -->
+
+    <div id="pagepiling">
+
+
+        <section class="section slide1 p-0" id="home" style="overflow-y: auto;">
+            <div class="slider-area" id="slider-area">
+                <div class="xyz"><div class="abcd"><form action="" method="post" enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                    
+                    {{data.aboutForm}}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+                <button onclick="addPortfolio()">Add Portfolio Item</button>
+                <button onclick="addReview()">Add Review Item</button>
+                <button onclick="addEvent()">Add Event Item</button></div>
+        </section>
+        <script>
+            function addPortfolio() {
+                var form = document.querySelector('.abcd');
+                var elem = document.createElement('div');
+                elem.innerHTML = `{{data.portForm}}`
+                form.appendChild(elem);
+            }
+
+            function addReview() {
+                var form = document.querySelector('.abcd');
+                var elem = document.createElement('div');
+                elem.innerHTML = `{{data.reviewForm}}`
+                form.appendChild(elem);
+            }
+
+            function addEvent() {
+                var form = document.querySelector('.abcd');
+                var elem = document.createElement('div');
+                elem.innerHTML = `{{data.eventForm}}`
+                form.appendChild(elem);
+            }
+        </script>
+
+</body>
+
+</html>
