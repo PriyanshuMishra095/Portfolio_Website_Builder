@@ -4,7 +4,7 @@ from .models import About, Review, Event, PortfolioItem
 class AboutForm(forms.ModelForm):
     class Meta:
         model = About
-        exclude=['about_id']
+        exclude=['id']
 
 class ReviewForm(forms.ModelForm):
     class Meta:

@@ -1,14 +1,23 @@
+import random
+import string
 from django.shortcuts import render
 from .models import About, Review, Event, PortfolioItem
+
+from django.shortcuts import render, redirect
+from .models import About, Review, Event, PortfolioItem
+from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
+
 # Create your views here.
 
 
-def index(request):
-    a = About.objects.all()[0]
-    r = Review.objects.filter(about_id=a.about_id)
-    e = Event.objects.filter(about_id=a.about_id)
+def index(request,id):
+    a = About.objects.get(id=id)
+    r = Review.objects.filter(about_id=a.id)
+    e = Event.objects.filter(about_id=a.id)
     context = {"data":
                {"name": a.name,
+                "logo": a.logo,
+                "icon": a.icon,
                 "about": a.about,
                 "work_title": a.work_title,
                 "work_desc": a.work_desc,
@@ -35,41 +44,56 @@ def index(request):
                }}
     return render(request, "index.html", context)
 
-from django.shortcuts import render, redirect
-from .models import About, Review, Event, PortfolioItem
-from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
+def form(request):
 
-def about(request):
-    if request.method == 'POST':
-        print(request.POST)
-        form = AboutForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-
-        portForm = PortfolioItemForm(request.POST, request.FILES)
-        if portForm.is_valid():
-            portForm.about_id = form.about_id
-            portForm.save()
-        
-        reviewForm = ReviewForm(request.POST, request.FILES)
-        if reviewForm.is_valid():
-            reviewForm.about_id = form.about_id
-            reviewForm.save()
-        
-        eventForm = EventForm(request.POST, request.FILES)
-        if eventForm.is_valid():
-            eventForm.about_id = form.about_id
-            eventForm.save()
-            return redirect('index')
-    else:
-        form = AboutForm()
-        portForm = PortfolioItemForm()
-        reviewForm = ReviewForm()
-        eventForm = EventForm()
+    form = AboutForm(prefix='aboutForm')
+    portForm = PortfolioItemForm(prefix='portForm')
+    reviewForm = ReviewForm(prefix='reviewForm')
+    eventForm = EventForm(prefix='eventForm')
 
     context = {"data":{
-               "img":"img/slider-img.png",'aboutForm': form,"portForm":portForm, 'reviewForm':reviewForm, 'eventForm':eventForm}}
+            "img":"img/slider-img.png",'aboutForm': form,"portForm":portForm, 'reviewForm':reviewForm, 'eventForm':eventForm}}
 
+    c = 0
+    if request.method == 'POST':
+        form = AboutForm(request.POST, request.FILES, prefix='aboutForm')
+        id = ""
+        key = string.ascii_letters + string.digits
+        for x in range(1,5):
+            id+=random.choice(key)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.id = id
+            obj.save()
+            context['aboutForm'] = form
+            c+=1
+
+        portForm = PortfolioItemForm(request.POST, request.FILES, prefix='portForm')
+        if portForm.is_valid():
+            portFormObj = portForm.save(commit=False)
+            portFormObj.about_id = obj.id
+            portForm.save()
+            context['portForm'] = portForm
+            c+=1
+        
+        reviewForm = ReviewForm(request.POST, request.FILES,  prefix='reviewForm')
+        if reviewForm.is_valid():
+            reviewFormObj = reviewForm.save(commit=False)
+            reviewFormObj.about_id = obj.id
+            reviewForm.save()
+            context['reviewForm'] = reviewForm
+            c+=1
+        
+        eventForm = EventForm(request.POST, request.FILES, prefix='eventForm')
+        if eventForm.is_valid():
+            eventFormObj = eventForm.save(commit=False)
+            eventFormObj.about_id = obj.id
+            eventForm.save()
+            context['eventForm'] = eventForm
+            c+=1
+
+        if c == 4:
+            return redirect('index',id)
     
     return render(request, 'about.html', context)
 

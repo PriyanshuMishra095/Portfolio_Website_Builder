@@ -37,33 +37,63 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <title>Document</title>
     <style>
-        input[type="file"]{
+        input[type="file"] {
             color: #fff;
         }
-        input:focus-within[type="file"]{
+
+        input:focus-within[type="file"] {
             color: #fff;
         }
+
         input {
             color: #000;
         }
+
         input:focus-within {
             color: #000;
         }
-        form{
+
+        #actualForm div{
             display: grid;
             grid-template-columns: 1fr 1fr;
+            padding: 12pt;
+            box-sizing: border-box;
+            align-items: center;
+            width: 100%;
+        }
+        #actualForm{
+            display: flex;
+            flex-direction: column;
+            gap: 12pt;
             align-items: center;
         }
-        .abcd{
+
+        .abcd {
             overflow: auto;
             height: 70vh;
+            padding: 12pt;
+            box-sizing: border-box;
         }
-        .xyz{
+
+        .xyz,form {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding: 12pt;
+            box-sizing: border-box;
+            gap: 12pt;
+        }
+        button{
+            padding: 12pt;
+            border:0;
+            margin: 12pt;
+        }
+        .button-group{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12pt;
         }
     </style>
 </head>
@@ -74,7 +104,7 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' %}" title="Logo" class="logo">
+            <a href="{% url 'index' 1 %}" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
                     <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
@@ -102,7 +132,7 @@
             </span>
             <div class="inner-wrapper">
                 <nav class="side-nav w-100">
-                    <a href="{% url 'index' %}" title="Logo" class="logo navbar-brand">
+                    <a href="{% url 'index' 1 %}" title="Logo" class="logo navbar-brand">
                         <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
                     </a>
                     <ul class="navbar-nav text-capitalize">
@@ -153,37 +183,44 @@
 
         <section class="section slide1 p-0" id="home" style="overflow-y: auto;">
             <div class="slider-area" id="slider-area">
-                <div class="xyz"><div class="abcd"><form action="" method="post" enctype="multipart/form-data"> 
-                    {% csrf_token %}
-                    
-                    {{data.aboutForm}}
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-                <button onclick="addPortfolio()">Add Portfolio Item</button>
-                <button onclick="addReview()">Add Review Item</button>
-                <button onclick="addEvent()">Add Event Item</button></div>
+                <div class="xyz">
+                    <div class="abcd">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div id="actualForm"><div>{{data.aboutForm}}</div></div>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <div class="buttonGroup"><button onclick="addPortfolio()">Add Portfolio Item</button>
+                        <button onclick="addReview()">Add Review Item</button>
+                        <button onclick="addEvent()">Add Event Item</button></div>
+                </div>
         </section>
         <script>
+            const scroller = document.querySelector(".abcd");
             function addPortfolio() {
-                var form = document.querySelector('.abcd');
-                var elem = document.createElement('div');
+                var form = document.querySelector('#actualForm');
+                let elem = document.createElement('div');
                 elem.innerHTML = `{{data.portForm}}`
-                form.appendChild(elem);
+                form.append(elem)
+                scroller.scrollTop = scroller.scrollHeight
             }
-
+            
             function addReview() {
-                var form = document.querySelector('.abcd');
-                var elem = document.createElement('div');
+                var form = document.querySelector('#actualForm');
+                let elem = document.createElement('div');
                 elem.innerHTML = `{{data.reviewForm}}`
-                form.appendChild(elem);
+                form.append(elem)
+                scroller.scrollTop = scroller.scrollHeight
             }
-
+            
             function addEvent() {
-                var form = document.querySelector('.abcd');
-                var elem = document.createElement('div');
+                var form = document.querySelector('#actualForm');
+                let elem = document.createElement('div');
                 elem.innerHTML = `{{data.eventForm}}`
-                form.appendChild(elem);
+                form.append(elem)
+                scroller.scrollTop = scroller.scrollHeight
             }
         </script>
 

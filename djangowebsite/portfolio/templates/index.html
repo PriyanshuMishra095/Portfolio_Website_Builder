@@ -9,7 +9,7 @@
     <!-- Page Title -->
     <title>{{data.name}}'s Portfolio Website</title>
     <!-- Favicon -->
-    <link href="{{data.icon}}" rel="icon">
+    <link href="/{{data.icon}}" rel="icon">
     <!-- Bundle -->
     <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -131,7 +131,7 @@
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-6 image-order">
                         <div class="slider-image">
-                            <img src="{{data.logo}}" alt="Slider-Image">
+                            <img src="/{{data.logo}}" alt="Slider-Image">
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 text-md-center text-lg-left">
@@ -294,17 +294,11 @@
                                     <!-- Events -->
                                     <div class="events" style="width: 2200px;">
                                         <ol>
-                                            <li><a href="#" data-date="16/01/2017" class="older-event selected">2001</a></li>
-                                            <li><a href="#" data-date="28/02/2017" style="left: 200px;">2005</a></li>
-                                            <li><a href="#" data-date="20/04/2017" style="left: 200px;">2007</a></li>
-                                            <li><a href="#" data-date="20/05/2017" style="left: 200px;">2009</a></li>
-                                            <li><a href="#" data-date="09/07/2017" style="left: 200px;">2011</a></li>
-                                            <li><a href="#" data-date="30/08/2017" style="left: 200px;">2013</a></li>
-                                            <li><a href="#" data-date="15/09/2017" style="left: 200px;">2015</a></li>
-                                            <li><a href="#" data-date="01/11/2017" style="left: 200px;">2017</a></li>
-                                            <li><a href="#" data-date="10/12/2017" style="left: 200px;">2019</a></li>
-                                            <li><a href="#" data-date="19/01/2018" style="left: 200px;">2020</a></li>
-                                            <li><a href="#" data-date="03/03/2018" style="left: 200px;">2020</a></li>
+                                            {% for event in data.events %}
+                                            <li><a href="#" data-date="{{event.date}}" style="left: 325px;" class="older-event">{{event.date}}</a>
+                                            </li>
+                                            {% endfor %}
+
                                         </ol>
                                         <span class="filling-line" aria-hidden="true"></span>
                                     </div>
@@ -912,7 +906,7 @@
                                     <p class="text-grey paragraph">{{review.comment}} </p>
                                 </div>
                                 <div class="testimonial-img mt-4">
-                                    <img src="{{review.image}}" alt="">
+                                    <img src="/{{review.image}}" alt="">
                                 </div>
                                 <div class="testimonial-tittle mt-3 mb-3">
                                     <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">{{review.name}}
