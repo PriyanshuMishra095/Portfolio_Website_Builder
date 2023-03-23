@@ -124,7 +124,11 @@
     <!-- END HEADER -->
 
     <div id="pagepiling">
-
+        <style>
+            .image-order{
+                width: 90vw
+            }
+        </style>
         <!-- START BANNER -->
         <section class="section slide1 p-0" id="home">
             <div class="slider-area" id="slider-area">
@@ -801,7 +805,8 @@
                         <p class="py-2 alt-font">I am available all the time for any project acording to my skills.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font font-weight-bold">{{data.insta_ID}}</h2>
+                        <h2 class="m-0 text-yellow main-font font-weight-bold">
+                            <a href="{{data.insta_ID}}">{{data.name}}</a></h2>
                         <p class="alt-font">My Instagram ID</p>
                     </div>
                 </div>
@@ -876,7 +881,7 @@
     <script src="{% static 'js/jquery.appear.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    
+
     <!-- CUSTOM JS -->
     <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
     <script src="{% static 'js/timeline.js' %}"></script>
