@@ -20,7 +20,7 @@
     <!-- Page Title -->
     <title>Priyanshu's Portfolio Website</title>
     <!-- Favicon -->
-    <link href="{% static data.img %}" rel="icon">
+    <link href="{% static '/img/slider-img - Copy.png' %}" rel="icon">
     <!-- Bundle -->
     <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -104,7 +104,7 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' 1 %}" title="Logo" class="logo">
+            <a href="{% url 'index' '55vp' %}" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
                     <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
@@ -132,7 +132,7 @@
             </span>
             <div class="inner-wrapper">
                 <nav class="side-nav w-100">
-                    <a href="{% url 'index' 1 %}" title="Logo" class="logo navbar-brand">
+                    <a href="{% url 'index' '55vp' %}" title="Logo" class="logo navbar-brand">
                         <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
                     </a>
                     <ul class="navbar-nav text-capitalize">
@@ -170,7 +170,7 @@
                         <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a> </li>
                         <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a> </li>
                     </ul>
-                    <p>&copy; Animation Coding</p>
+                    <p>&copy; Priyanshu Mishra</p>
                 </div>
             </div>
         </div>
@@ -223,7 +223,39 @@
                 scroller.scrollTop = scroller.scrollHeight
             }
         </script>
+        
+    <!-- Start Copyright -->
+    <div class="slider-bottom">
+        <div class="slider-footer w-auto">
+            <ul class="social-icons-simple">
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a> </li>
+                <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
+                </li>
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a> </li>
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>
+                </li>
+            </ul>
+        </div>
+        <span class="slider-copyright text-grey">{{data.name}}</span>
+    </div>
+    <!-- End Copyright -->
 
+    <!-- JavaScript -->
+    <script src="{% static 'js/bundle.min.js' %}"></script>
+    <!-- Plugin Js -->
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+    <script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- CUSTOM JS -->
+    <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
+    <script src="{% static 'js/timeline.js' %}"></script>
+    <script src="{% static 'js/contact_us.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>

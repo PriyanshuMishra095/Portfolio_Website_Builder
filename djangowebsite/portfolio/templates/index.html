@@ -705,13 +705,13 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="team-classic owl-team owl-carousel text-center">
-                            <!-- Item 1 -->
+                            {% for port in data.portfolio %}
                             <div class="item">
                                 <div class="team-data-img">
-                                    <a href="https://dribbble.com/shots/14575988-Css-Neumorphic-Login-Form-Design"
+                                    <a href=""
                                         data-fancybox="images">
                                         <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/14575988/media/e7451c93c76301cbd8e0064e82ff3440.png?compress=1&resize=1200x900&vertical=top"
+                                            <img src="/{{port.image}}"
                                                 alt="team" class="img-responsive" data-no-retina>
                                             <div class="overlay-text center-block">
                                                 <div class="cases-image-inner">
@@ -719,150 +719,19 @@
                                                     <span class="cases-line top-right"></span>
                                                     <span class="cases-line bottom"></span>
                                                     <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Strategy Buildup</h6>
+                                                    <h6 class="text-white text-uppercase alt-font">{{port.image_desc}}</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                     <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Corporate Website</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">{{port.item_title}}</h5>
+                                        <p class="text-capitalize">{{port.desc}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Item 2 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17985809/media/7f3f2dc949b0b94697613b442a08e2b6.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17985809/media/7f3f2dc949b0b94697613b442a08e2b6.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Business Planning
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">My Presentation</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17778694/media/c0e06aabf0e5ed8b361b8d90a0fe7cc9.png?compress=1&resize=1200x900&vertical=top"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17778694/media/c0e06aabf0e5ed8b361b8d90a0fe7cc9.png?compress=1&resize=1200x900&vertical=top"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Creative Ideas</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Graphic Portfolio</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17613934/media/172a082c1d530b337daa51f5a2198bae.png"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17613934/media/172a082c1d530b337daa51f5a2198bae.png"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Strategy Buildup</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Corporate Website</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17951998/media/32c5da9f4e40637698987c369e155e62.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17951998/media/32c5da9f4e40637698987c369e155e62.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Business Planning
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">My Presentation</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 6 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/14901752/media/da35413e975b19705e598bb7e482c2cc.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/14901752/media/da35413e975b19705e598bb7e482c2cc.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Creative Ideas</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Graphic Portfolio</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+                            
                         </div>
                         <a class="circle ini-customPrevBtn" id="team-circle-left">
                             <i class="lni lni-arrow-left-circle"></i>
@@ -999,15 +868,15 @@
 
     <!-- JavaScript -->
     <script src="{% static 'js/bundle.min.js' %}"></script>
+
     <!-- Plugin Js -->
-
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 
     <script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
     <script src="{% static 'js/jquery.appear.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    
     <!-- CUSTOM JS -->
     <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
     <script src="{% static 'js/timeline.js' %}"></script>

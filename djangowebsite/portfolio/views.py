@@ -9,11 +9,11 @@ from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
 
 # Create your views here.
 
-
 def index(request,id):
     a = About.objects.get(id=id)
     r = Review.objects.filter(about_id=a.id)
     e = Event.objects.filter(about_id=a.id)
+    p = PortfolioItem.objects.filter(about_id=a.id)
     context = {"data":
                {"name": a.name,
                 "logo": a.logo,
@@ -41,6 +41,8 @@ def index(request,id):
                 "img":"img/slider-img.png",
                 "reviews":r,
                 "events":e,
+                "portfolio":p
+
                }}
     return render(request, "index.html", context)
 
