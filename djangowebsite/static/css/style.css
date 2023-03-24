@@ -661,7 +661,7 @@ header a.logo img {
 }
 
 .slider-area{
-    align-items: center;
+    /* align-items: center; */
     display: flex;
     position: relative;
 }
@@ -1097,6 +1097,10 @@ header a.logo img {
     z-index: 1;
     width: 100%;
     left: 0;
+    flex-flow: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: flex;
     top: 0;
     -webkit-transform: translateX(-100%);
     -moz-transform: translateX(-100%);
@@ -1507,7 +1511,7 @@ header a.logo img {
 ====================================== */
 
 .contact-bg{
-    background-image: url("../img/contact-bg.jpg");
+    background-image: url("../img/contact-bg.jpg") !important;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;

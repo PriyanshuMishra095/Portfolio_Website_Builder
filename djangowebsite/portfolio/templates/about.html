@@ -20,7 +20,7 @@
     <!-- Page Title -->
     <title>Priyanshu's Portfolio Website</title>
     <!-- Favicon -->
-    <link href="{% static data.img %}" rel="icon">
+    <link href="{% static '/img/slider-img - Copy.png' %}" rel="icon">
     <!-- Bundle -->
     <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -37,23 +37,8 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <title>Document</title>
     <style>
-        input[type="file"] {
-            color: #fff;
-        }
-
-        input:focus-within[type="file"] {
-            color: #fff;
-        }
-
-        input {
-            color: #000;
-        }
-
-        input:focus-within {
-            color: #000;
-        }
-
-        #actualForm div{
+        
+        #actualForm div {
             display: grid;
             grid-template-columns: 1fr 1fr;
             padding: 12pt;
@@ -61,7 +46,8 @@
             align-items: center;
             width: 100%;
         }
-        #actualForm{
+
+        #actualForm {
             display: flex;
             flex-direction: column;
             gap: 12pt;
@@ -69,15 +55,37 @@
         }
 
         .abcd {
-            overflow: auto;
-            height: 70vh;
             padding: 12pt;
             box-sizing: border-box;
+            display: grid;
+            grid-template-rows: 1% 112%;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
         }
-
-        .xyz,form {
+        .abcd h4{
+            text-align: center;
+        }
+        .xyz{
+            display: grid;
+            grid-template-rows: 2fr 7fr;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            display: flex;
+        }
+        .xyz h3, .xyz p, .xyz span, .xyz h5{
+            text-align: center;
+        }
+        .slider-area{
+            background-image: url("{% static 'img/contact-bg.jpg' %}");
+            align-items: flex-start;
+        }
+        form {
+            display: grid;
+            grid-template-rows: 4fr 1fr;
+            height: 60vh;
+            overflow: auto;
+            width: 100%;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -85,12 +93,17 @@
             box-sizing: border-box;
             gap: 12pt;
         }
-        button{
+        form button{
+            width: fit-content !important;
+            justify-self: center;
+        }
+        button {
             padding: 12pt;
-            border:0;
+            border: 0;
             margin: 12pt;
         }
-        .button-group{
+
+        .button-group {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 12pt;
@@ -104,10 +117,10 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' 1 %}" title="Logo" class="logo">
+            <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
-                    <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+                    <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
                 </div>
             </a>
 
@@ -132,8 +145,8 @@
             </span>
             <div class="inner-wrapper">
                 <nav class="side-nav w-100">
-                    <a href="{% url 'index' 1 %}" title="Logo" class="logo navbar-brand">
-                        <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
+                    <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo navbar-brand">
+                        <img src="{% static 'img/slider-img - copy.png' %}" alt="logo">
                     </a>
                     <ul class="navbar-nav text-capitalize">
                         <li class="nav-item">
@@ -156,22 +169,33 @@
                         </li>
                     </ul>
                     <div class="text-center sidebar_btn">
+                        <a href="{% url 'form' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
+                    </div>
+                    <div class="text-center sidebar_btn">
+                        <a href="" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download your Responses</a>
+                    </div>
+                    <!-- <div class="text-center sidebar_btn">
                         <a href="personal-hotspot/download-resume/resume.pdf" download
                             class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
-                    </div>
+                    </div> -->
                 </nav>
 
-                <div class="side-footer w-100">
-                    <ul class="social-icons-simple">
-                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
-                            </a> </li>
-                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-instagram-original"></i>
-                            </a> </li>
-                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a> </li>
-                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a> </li>
-                    </ul>
-                    <p>&copy; Animation Coding</p>
-                </div>
+                    <div class="side-footer w-100">
+                        <ul class="social-icons-simple">
+                            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
+                                </a> </li>
+                            <li><a class="social-icon" href="javascript:void(0)"><i
+                                        class="lni lni-instagram-original"></i>
+                                </a> </li>
+                            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a>
+                            </li>
+                            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a>
+                            </li>
+                        </ul>
+                        <p>&copy; Priyanshu Mishra</p>
+                    </div>
             </div>
         </div>
         <a id="close_side_menu" href="javascript:void(0);"></a>
@@ -179,51 +203,77 @@
     <!-- END HEADER -->
 
     <div id="pagepiling">
-
-
+    
         <section class="section slide1 p-0" id="home" style="overflow-y: auto;">
             <div class="slider-area" id="slider-area">
                 <div class="xyz">
-                    <div class="abcd">
-                        <form action="" method="post" enctype="multipart/form-data">
+                <section class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="main-font text-uppercase"><span class="text-yellow d-block text-uppercase"> Build Your Portfolio </span> <span> Let Your Art Speak </span></h3>
+                            <p class="py-2 alt-font"><h5>We'll help you showcase your artwork to the world.</h5></p>
+                        </div>
+                    </div>
+                </section>
+                <div class="abcd">
+                        <div><p class="py-2-alt-font">Let's get you a Beautiful Website! <br>Fill in the details below and click the submit button to see the magic ;)</p>
+                            </div><form action="" method="post" class="contact-form" enctype="multipart/form-data">
                             {% csrf_token %}
 
-                            <div id="actualForm"><div>{{data.aboutForm}}</div></div>
-                            <button type="submit">Submit</button>
+                            <div id="actualForm">
+                                <div>{{data.aboutForm}}</div>
+                                <h4>Events</h4>
+                                <div>{{data.eventForm}}</div>
+                                <h4>Portfolios</h4>
+                                <div>{{data.portForm}}</div>
+                                <h4>Reviews</h4>
+                                <div>{{data.reviewForm}}</div>
+                            </div>
+                            <button type="submit" class="btn btn-medium btn-rounded btn-yellow text-capitalize ">Submit</button>
                         </form>
                     </div>
-                    <div class="buttonGroup"><button onclick="addPortfolio()">Add Portfolio Item</button>
-                        <button onclick="addReview()">Add Review Item</button>
-                        <button onclick="addEvent()">Add Event Item</button></div>
+                    
                 </div>
         </section>
         <script>
-            const scroller = document.querySelector(".abcd");
-            function addPortfolio() {
-                var form = document.querySelector('#actualForm');
-                let elem = document.createElement('div');
-                elem.innerHTML = `{{data.portForm}}`
-                form.append(elem)
-                scroller.scrollTop = scroller.scrollHeight
-            }
-            
-            function addReview() {
-                var form = document.querySelector('#actualForm');
-                let elem = document.createElement('div');
-                elem.innerHTML = `{{data.reviewForm}}`
-                form.append(elem)
-                scroller.scrollTop = scroller.scrollHeight
-            }
-            
-            function addEvent() {
-                var form = document.querySelector('#actualForm');
-                let elem = document.createElement('div');
-                elem.innerHTML = `{{data.eventForm}}`
-                form.append(elem)
-                scroller.scrollTop = scroller.scrollHeight
-            }
+            document.querySelectorAll("input").forEach(e=>{
+                e.classList.add("form-control")
+            })
         </script>
 
+        <!-- Start Copyright -->
+        <div class="slider-bottom">
+            <div class="slider-footer w-auto">
+                <ul class="social-icons-simple">
+                    <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a>
+                    </li>
+                    <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
+                    </li>
+                    <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a>
+                    </li>
+                    <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>
+                    </li>
+                </ul>
+            </div>
+            <span class="slider-copyright text-grey">{{data.name}}</span>
+        </div>
+        <!-- End Copyright -->
+
+        <!-- JavaScript -->
+        <script src="{% static 'js/bundle.min.js' %}"></script>
+
+        <!-- Plugin Js -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+        <script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
+        <script src="{% static 'js/jquery.appear.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+        <!-- CUSTOM JS -->
+        <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
+        <script src="{% static 'js/timeline.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>

@@ -1,0 +1,852 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Page Title -->
+    <title>{{data.name}}'s Portfolio Website</title>
+    <!-- Favicon -->
+    <link href="/{{data.icon}}" rel="icon">
+    <!-- Bundle -->
+    <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <!-- Plugin Css -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <!-- Style Sheet -->
+    <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.pagepiling.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+    <!-- START LOADER -->
+    <div class="loader-bg">
+        <div id="container">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <filter id="shadow">
+                        <feDropShadow dx="0" dy="0" stdDeviation="0.5" flood-color="#dabd1d" />
+                    </filter>
+                </defs>
+                <circle id="spinner"
+                    style="fill:transparent;stroke:#dabd1d;stroke-width: 8px;stroke-linecap: round;filter:url(#shadow);"
+                    cx="50" cy="50" r="45" />
+            </svg>
+        </div>
+    </div>
+    <!-- END LOADER -->
+
+    <!-- START HEADER -->
+    <header>
+        <!--Navigation-->
+        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <a href="#home" title="Logo" class="logo">
+                <!--Logo Default-->
+                <div class="mega-logo">
+                    <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+
+                </div>
+            </a>
+
+            <!--Side Menu Button-->
+            <div class="navigation-toggle">
+                <ul class="slider-social toggle-btn my-0">
+                    <li>
+                        <a href="javascript:void(0);" class="sidemenu_btn" id="sidemenu_toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Side Nav-->
+        <div class="side-menu hidden">
+            <span id="btn_sideNavClose">
+                <i class="lni lni-plus btn-close"></i>
+            </span>
+            <div class="inner-wrapper">
+                <nav class="side-nav w-100">
+                    <a href="#home" title="Logo" class="logo navbar-brand">
+                        <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
+                    </a>
+                    <ul class="navbar-nav text-capitalize">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#timeline">Timeline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonial">Testimonials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="text-center sidebar_btn">
+                        <a href="personal-hotspot/download-resume/resume.pdf" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
+                    </div>
+                </nav>
+
+                <div class="side-footer w-100">
+                    <ul class="social-icons-simple">
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
+                            </a> </li>
+                        <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i>
+                            </a> </li>
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a> </li>
+                        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a> </li>
+                    </ul>
+                    <p>&copy; {{data.name}}</p>
+                </div>
+            </div>
+        </div>
+        <a id="close_side_menu" href="javascript:void(0);"></a>
+    </header>
+    <!-- END HEADER -->
+
+    <div id="pagepiling">
+<style>
+    .image-order{
+        width: 90vw
+    }
+</style>
+        <!-- START BANNER -->
+        <section class="section slide1 p-0" id="home">
+            <div class="slider-area" id="slider-area">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6 image-order">
+                        <div class="slider-image">
+                            <img src="/{{data.logo}}" alt="Slider-Image">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 text-md-center text-lg-left">
+                        <div class="slider-content">
+                            <h1 class="main-font text-uppercase"><span class="slider-text px-2"> Hello, I am </span>
+                                <span class="d-block text-yellow"> {{data.work_title}}.</span></h1>
+                            <p class="pt-3 alt-font content-para">{{data.work_desc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Circle-One -->
+                <div class="circle-one">
+                    <span data-tootik="About" data-tootik-conf="right dark square shadow">
+                        <a href="#about">
+                            <span class="animated-circle position-relative"></span>
+                        </a>
+                    </span>
+                </div>
+                <!-- Circle-Two -->
+                <div class="circle-two">
+                    <span data-tootik="Timeline" data-tootik-conf="left dark square shadow">
+                        <a href="#timeline">
+                            <span class="animated-circle position-relative"></span>
+                        </a>
+                    </span>
+                </div>
+                <!-- Circle-Three -->
+                <div class="circle-three">
+                    <span data-tootik="Portfolio" data-tootik-conf="top dark square shadow">
+                        <a href="#portfolio">
+                            <span class="animated-circle position-relative"></span>
+                        </a>
+                    </span>
+                </div>
+                <!-- Circle-Four -->
+                <div class="circle-four">
+                    <span data-tootik="Testimonials" data-tootik-conf="bottom dark square shadow">
+                        <a href="#testimonial">
+                            <span class="animated-circle position-relative"></span>
+                        </a>
+                    </span>
+                </div>
+                <!-- Circle-Five -->
+                <div class="circle-five">
+                    <span data-tootik="Contact" data-tootik-conf="bottom dark square shadow">
+                        <a href="#contact">
+                            <span class="animated-circle position-relative"></span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- END BANNER -->
+
+        <!-- START SKILLS -->
+        <section class="section slide2 skills" id="about">
+            <div class="container">
+                <div class="row pb-5">
+                    <div class="col-12 col-md-7 pl-md-0">
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> {{data.work}}</span></h3>
+                        <p class="py-2 alt-font">{{data.work_desc}}</p>
+                    </div>
+                    <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
+                        <h2 class="m-0 text-yellow main-font">{{data.experience_years}}+</h2>
+                        <p class="alt-font">Years of Experience</p>
+                    </div>
+                </div>
+                <div class="row pt-md-5 skill-box">
+                    <div class="col-12 col-md-6">
+
+                        <div class="row">
+                            <!-- First Skill -->
+                            <div class="col-12 col-md-6 text-center text-md-left pl-md-0">
+                                <h4 class="main-font text-yellow skill">{{data.skill_1_title}}</h4>
+                                <p class="alt-font text-white mt-3">{{data.skill_1_desc}}</p>
+                            </div>
+                            <!-- Second Skill -->
+                            <div class="col-12 col-md-6 pt-5 pt-md-0 pr-md-0 text-center text-md-left">
+                                <h4 class="main-font text-yellow skill">{{data.skill_2_title}}</h4>
+                                <p class="alt-font text-white mt-3">{{data.skill_2_desc}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <!-- Third Skill -->
+                            <div class="col-12 col-md-6 text-center text-md-left pl-md-0">
+                                <h4 class="main-font text-yellow skill">{{data.skill_3_title}}</h4>
+                                <p class="alt-font text-white mt-3">{{data.skill_3_desc}}</p>
+                            </div>
+                            <!-- Fourth Skill -->
+                            <div class="col-12 col-md-6 pt-5 pt-md-0 text-center text-md-left pr-md-0">
+                                <h4 class="main-font text-yellow skill">{{data.skill_4_title}}</h4>
+                                <p class="alt-font text-white mt-3">{{data.skill_4_desc}}.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Progress Bars -->
+                    <div class="col-12 col-md-5 offset-md-1 text-left pr-md-0 bars-section">
+                        <ul class="progress-bar-side">
+                            <!-- First Bar -->
+                            <li class="custom-progress text-white">
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_1_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_1_perc}}</b>%</span></h6>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_1_perc}}"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Second Bar -->
+                            <li class="custom-progress text-white">
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_2_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_2_perc}}</b>%</span></h6>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_2_perc}}"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Third Bar -->
+                            <li class="custom-progress text-white">
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_3_title}}<span class="float-right"><b
+                                            class="numscroller">{{data.talent_3_perc}}</b>%</span></h6>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_3_perc}}"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SKILLS -->
+
+        <!-- START TIMELINE -->
+        <section class="section slide3 timeline-bg" id="timeline">
+            <div class="container">
+                <div class="row pb-5 heading-row">
+                    <div class="col-12 col-md-7">
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block text-uppercase"> My Career
+                            </span> <span> History & Timeline </span></h3>
+                        <p class="py-2 alt-font">Please look what I have done so far in my life.</p>
+                    </div>
+                    <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
+                        <h2 class="m-0 text-yellow main-font">{{data.age}}</h2>
+                        <p class="alt-font">Years Old</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cd-horizontal-timeline loaded">
+                            <div class="timeline">
+                                <!-- Events-Wrapper -->
+                                <div class="events-wrapper">
+                                    <!-- Events -->
+                                    <div class="events" style="width: 2200px;">
+                                        <ol>
+                                            <!-- {% for event in data.events %}
+                                            <li><a href="#" data-date="{{event.date}}" style="left: 325px;" class="older-event selected">{{event.date}}</a>
+                                            </li>
+                                            {% endfor %} -->
+                                            <li><a href="#" data-date="16/01/2017" class="older-event selected">2001</a>
+                                            </li>
+                                            <li><a href="#" data-date="01/01/2018" style="left: 200px;">2018</a></li>
+                                            <li><a href="#" data-date="10/03/2018" style="left: 200px;">2020</a></li>
+                                            <li><a href="#" data-date="19/05/2019" style="left: 200px;">2021</a></li>
+                                            <li><a href="#" data-date="03/08/2019" style="left: 200px;">2024</a></li>
+
+                                        </ol>
+                                        <span class="filling-line" aria-hidden="true"></span>
+                                    </div>
+                                    <!-- Events -->
+                                </div>
+                                <!-- Events-Wrapper -->
+                                <ul class="cd-timeline-navigation">
+                                    <li><a href="#" class="prev">Prev</a></li>
+                                    <li><a href="#" class="next">Next</a></li>
+                                </ul>
+                                <!-- Timeline-Navigation -->
+                            </div>
+                            <!-- Timeline -->
+                            <div class="events-content">
+                                <ol>
+                                    <li class="selected" data-date="16/01/2017">
+                                        <!-- Main Content Div -->
+                                        <div class="col-12 pl-md-0">
+                                            <div class="main-content text-uppercase">
+                                                <h4 class="text-yellow main-font font-weight-normal">3rd FEBUARY 2001
+                                                </h4>
+                                                <h2 class="main-font">I had just been born</h2>
+                                            </div>
+                                        </div>
+                                        <!-- Sub Content Div -->
+                                        <div class="row align-items-center">
+                                            <div class="sub-content">
+                                                <p>I was born in Bokaro, Jharkhand.</p>
+                                                <p>I currently live in Pune, Maharashtra.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-date="01/01/2018">
+                                        <!-- Main Content Div -->
+                                        <div class="col-12 pl-md-0">
+                                            <div class="main-content text-uppercase">
+                                                <h4 class="text-yellow main-font font-weight-normal">24 Sep 2018</h4>
+                                                <h2 class="main-font">I Passed my 10th</h2>
+                                            </div>
+                                        </div>
+                                        <!-- Sub Content Div -->
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-3 pl-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
+                                                    <p class="alt-font">The subjects I liked most are Physics, Maths and Computers.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
+                                                    </h5>
+                                                    <p class="alt-font">I got First prize in Drawing Competitions.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
+                                                    </h5>
+                                                    <p class="alt-font">Languages like Java and HTML </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3 pr-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">Final year project
+                                                    </h5>
+                                                    <p class="alt-font">I made a Drone as a IoT Project in the final year.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-date="10/03/2018">
+                                        <!-- Main Content Div -->
+                                        <div class="col-12 pl-md-0">
+                                            <div class="main-content text-uppercase">
+                                                <h4 class="text-yellow main-font font-weight-normal">02 Sep 2020</h4>
+                                                <h2 class="main-font">Completed my High School Studies</h2>
+                                            </div>
+                                        </div>
+                                        <!-- Sub Content Div -->
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-6 pl-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
+                                                    <p class="alt-font">Physics, Chemistry, Maths and Computers</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 pr-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
+                                                    </h5>
+                                                    <p class="alt-font">I got First rank.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-date="19/05/2019">
+                                        <!-- Main Content Div -->
+                                        <div class="col-12 pl-md-0">
+                                            <div class="main-content text-uppercase">
+                                                <h4 class="text-yellow main-font font-weight-normal">26 Feb 2021</h4>
+                                                <h2 class="main-font">Got into SICSR</h2>
+                                            </div>
+                                        </div>
+                                        <!-- Sub Content Div -->
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 pl-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
+                                                    <p class="alt-font">BCA(Honours)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
+                                                    </h5>
+                                                    <p class="alt-font">Made various Projects</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4 pr-md-0">
+                                                <div class="sub-content">
+                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
+                                                    </h5>
+                                                    <p class="alt-font">Many things</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-date="03/08/2019">
+                                        <!-- Main Content Div -->
+                                        <div class="col-12 pl-md-0">
+                                            <div class="main-content text-uppercase">
+                                                <h4 class="text-yellow main-font font-weight-normal">24 MAY 2024</h4>
+                                                <h2 class="main-font">Will graduate from collage</h2>
+                                            </div>
+                                        </div>
+                                        <!-- Sub Content Div -->
+                                        <div class="row align-items-center">
+                                            <div class="sub-content">
+                                                <p>Graduation will be finished.</p>
+                                                <p>By 2024 I'll be done with my internship also.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END TIMELINE -->
+
+        <!-- START PORTFOLIO -->
+        <section class="section slide4 portfolio-bg" id="portfolio">
+            <div class="container">
+                <div class="row pb-5 heading-row">
+                    <div class="col-12 col-md-7">
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> PORTFOLIO </span> <span>
+                                MY RECENT WORK </span></h3>
+                        <p class="py-1 alt-font">I believe in art and that is my passion throughout my life.</p>
+                    </div>
+                    <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
+                        <h2 class="m-0 text-yellow main-font">06</h2>
+                        <p class="alt-font">Portfolio Items</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="team-classic owl-team owl-carousel text-center">
+                            <!-- Item 1 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/sketch5.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Concept Car</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Concept Car</h5>
+                                        <p class="text-capitalize">A 3d model of my concept car made and rendered in Blender. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/sig2.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Signature</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">My Signature</h5>
+                                        <p class="text-capitalize">A 3d model of my signature made and rendered in Blender.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/car1.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Creative Ideas</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Sketch</h5>
+                                        <p class="text-capitalize">A 3d model of my sketch made and rendered in Blender.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/earth2.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Earth</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Earth</h5>
+                                        <p class="text-capitalize">A 3d model of Earth made and rendered in Blender.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/phupwlp.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Abstract Art
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Mandelbrot Set</h5>
+                                        <p class="text-capitalize">A 3d model of my Mandelbrot Set made and rendered in Blender.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 6 -->
+                            <div class="item">
+                                <div class="team-data-img">
+                                    <a href=""
+                                        data-fancybox="images">
+                                        <div class="single-work">
+                                            <img src="{% static '/img/1untitled.png' %}"
+                                                alt="team" class="img-responsive" data-no-retina>
+                                            <div class="overlay-text center-block">
+                                                <div class="cases-image-inner">
+                                                    <span class="cases-line top"></span>
+                                                    <span class="cases-line top-right"></span>
+                                                    <span class="cases-line bottom"></span>
+                                                    <span class="cases-line bottom-left"></span>
+                                                    <h6 class="text-white text-uppercase alt-font">Creative Idea</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-content">
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">First Render</h5>
+                                        <p class="text-capitalize">First 3d model I made and rendered in Blender.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="circle ini-customPrevBtn" id="team-circle-left">
+                            <i class="lni lni-arrow-left-circle"></i>
+                        </a>
+                        <a class="circle ini-customNextBtn" id="team-circle-right">
+                            <i class="lni lni-arrow-right-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END PORTFOLIO -->
+
+        <!-- START TESTIMONIALS -->
+        <section class="section slide6 testimonial-bg" id="testimonial">
+            <div class="container">
+                <div class="row pb-5 heading-row">
+                    <div class="col-12 col-md-7">
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block text-uppercase"> Customers
+                            </span> <span> love the work i do </span></h3>
+                        <p class="py-2 heading-row alt-font">Please look what my clients say about my exceptional work
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
+                        <h2 class="m-0 text-yellow main-font">200+</h2>
+                        <p class="alt-font">Clients Worldwide</p>
+                    </div>
+                </div>
+
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <!-- Testimonial Slider -->
+                        <div id="testimonial-carousal" class="testimonial-owl owl-carousel owl-theme">
+                            <!-- Item-1 -->
+                            {% for review in data.reviews %}
+                            <div class="item text-center">
+                                <div class="icon-quotes mb-4">
+                                    <i class="lni lni-quotation"></i>
+                                </div>
+                                <div class="description">
+                                    <p class="text-grey paragraph">{{review.comment}} </p>
+                                </div>
+                                <div class="testimonial-img mt-4">
+                                    <img src="/{{review.image}}" alt="">
+                                </div>
+                                <div class="testimonial-tittle mt-3 mb-3">
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">{{review.name}}
+                                    </h4>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- Item-2 -->
+                            <div class="item text-center">
+                                <div class="icon-quotes mb-4">
+                                    <i class="lni lni-quotation"></i>
+                                </div>
+                                <div class="description">
+                                    <p class="text-grey paragraph">Heres a sample Review.</p>
+                                </div>
+                                <div class="testimonial-img mt-4">
+                                    <img src="{% static '/img/av/girl.png' %}" alt="">
+                                </div>
+                                <div class="testimonial-tittle mt-3 mb-3">
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">Ricky Clark
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Item-3 -->
+                            <div class="item text-center">
+                                <div class="icon-quotes mb-4">
+                                    <i class="lni lni-quotation"></i>
+                                </div>
+                                <div class="description">
+                                    <p class="text-grey paragraph">Heres a sample Review.</p>
+                                </div>
+                                <div class="testimonial-img mt-4">
+                                    <img src="{% static '/img/av/hacker.png' %}" alt="">
+                                </div>
+                                <div class="testimonial-tittle mt-3 mb-3">
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">Johnson
+                                        Smith</h4>
+                                </div>
+                            </div>
+                            <!-- Item-4 -->
+                            <div class="item text-center">
+                                <div class="icon-quotes mb-4">
+                                    <i class="lni lni-quotation"></i>
+                                </div>
+                                <div class="description">
+                                    <p class="text-grey paragraph">Heres a sample Review.</p>
+                                </div>
+                                <div class="testimonial-img mt-4">
+                                    <img src="{% static '/img/av/man.png' %}" alt="">
+                                </div>
+                                <div class="testimonial-tittle mt-3 mb-3">
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">Ellie Joe
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Item-5 -->
+                            <div class="item text-center">
+                                <div class="icon-quotes mb-4">
+                                    <i class="lni lni-quotation"></i>
+                                </div>
+                                <div class="description">
+                                    <p class="text-grey paragraph">Heres a sample Review.</p>
+                                </div>
+                                <div class="testimonial-img mt-4">
+                                    <img src="{% static '/img/av/programmer.png' %}" alt="">
+                                </div>
+                                <div class="testimonial-tittle mt-3 mb-3">
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">Sara Jones
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- END TESTIMONIALS -->
+
+        <!-- START CONTACT -->
+        <section class="section slide5 contact-bg" id="contact">
+            <div class="container">
+                <div class="row pb-5">
+                    <div class="col-12 col-md-7">
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block text-uppercase"> Contact
+                                Me </span> <span> Lets Get In Touch </span></h3>
+                        <p class="py-2 alt-font">I am available all the time for any project acording to my skills.</p>
+                    </div>
+                    <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
+                        <h2 class="m-0 text-yellow main-font font-weight-bold">
+                            <a href="{{data.insta_ID}}">{{data.name}}</a>
+                        </h2>
+                        <p class="alt-font">Click Above For My Instagram ID</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form-data">
+                    <div class="row pt-3">
+                        <!-- Submission Popup -->
+                        <div class="col-12">
+                            <div class="col-sm-12 px-0" id="result"></div>
+                        </div>
+                        <!--Left Column-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Name" required="" id="first_name"
+                                    name="firstName">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="tel" placeholder="Contact No" id="phone"
+                                    name="userPhone">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="email" placeholder="Email" required="" id="email"
+                                    name="userEmail">
+                            </div>
+                        </div>
+                        <!--Right Column-->
+                        <div class="col-12 col-md-6 offset-md-1 contact-form">
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Type Your Message Here" id="message"
+                                    name="userMessage"></textarea>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="col-12 px-md-0">
+                            <div class="contact-btn pt-5 text-center text-lg-left">
+                                <button type="button"
+                                    class="btn btn-medium btn-rounded btn-yellow text-capitalize contact_btn" onclick="alert('Success')">Contact
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- END CONTACT -->
+    </div>
+
+    <!-- Start Copyright -->
+    <div class="slider-bottom">
+        <div class="slider-footer w-auto">
+            <ul class="social-icons-simple">
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a> </li>
+                <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
+                </li>
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a> </li>
+                <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>
+                </li>
+            </ul>
+        </div>
+        <span class="slider-copyright text-grey">{{data.name}}</span>
+    </div>
+    <!-- End Copyright -->
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/bundle.min.js' %}"></script>
+
+    <!-- Plugin Js -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+    <script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    
+    <!-- CUSTOM JS -->
+    <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
+    <script src="{% static 'js/timeline.js' %}"></script>
+    <script src="{% static 'js/contact_us.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 import random
 import string
+from django.forms import formset_factory
 from django.shortcuts import render
 from .models import About, Review, Event, PortfolioItem
 
@@ -9,11 +10,23 @@ from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
 
 # Create your views here.
 
-
 def index(request,id):
     a = About.objects.get(id=id)
     r = Review.objects.filter(about_id=a.id)
     e = Event.objects.filter(about_id=a.id)
+    p = PortfolioItem.objects.filter(about_id=a.id)
+    for x in e:
+        date_obj = x.date
+        x.date = date_obj.strftime("%d/%m/%Y")
+        x.year = date_obj.strftime("%Y")
+        x.day = date_obj.strftime("%d")
+        if 4 <= int(x.day) <= 20 or 24 <= int(x.day) <= 30:
+            suffix = "th"
+        else:
+            suffix = ["st", "nd", "rd"][int(x.day) % 10 - 1]
+        x.day = x.day + suffix
+        x.comp_date = f"{x.day} {date_obj.strftime('%b')}, {x.year}"
+
     context = {"data":
                {"name": a.name,
                 "logo": a.logo,
@@ -41,15 +54,24 @@ def index(request,id):
                 "img":"img/slider-img.png",
                 "reviews":r,
                 "events":e,
+                "portfolio":p
+
                }}
     return render(request, "index.html", context)
 
 def form(request):
+    portNum = 5
+    reviewNum = 5
+    eventNum = 5
 
     form = AboutForm(prefix='aboutForm')
-    portForm = PortfolioItemForm(prefix='portForm')
-    reviewForm = ReviewForm(prefix='reviewForm')
-    eventForm = EventForm(prefix='eventForm')
+    portFormSet = formset_factory(PortfolioItemForm, extra=portNum)
+    reviewFormSet = formset_factory(ReviewForm, extra=reviewNum)
+    eventFormSet = formset_factory(EventForm, extra=eventNum)
+
+    portForm = portFormSet(prefix='portForm')
+    reviewForm = reviewFormSet(prefix='reviewForm')
+    eventForm = eventFormSet(prefix='eventForm')
 
     context = {"data":{
             "img":"img/slider-img.png",'aboutForm': form,"portForm":portForm, 'reviewForm':reviewForm, 'eventForm':eventForm}}
@@ -68,29 +90,33 @@ def form(request):
             context['aboutForm'] = form
             c+=1
 
-        portForm = PortfolioItemForm(request.POST, request.FILES, prefix='portForm')
+        portForm = portFormSet(request.POST, request.FILES, prefix='portForm')
         if portForm.is_valid():
-            portFormObj = portForm.save(commit=False)
-            portFormObj.about_id = obj.id
-            portForm.save()
+            for form in portForm:
+                print(form.cleaned_data)
+                obj = form.save(commit=False)
+                obj.about_id = id
+                obj.save()
+            c+=1
             context['portForm'] = portForm
-            c+=1
         
-        reviewForm = ReviewForm(request.POST, request.FILES,  prefix='reviewForm')
+        reviewForm = reviewFormSet(request.POST, request.FILES,  prefix='reviewForm')
         if reviewForm.is_valid():
-            reviewFormObj = reviewForm.save(commit=False)
-            reviewFormObj.about_id = obj.id
-            reviewForm.save()
+            for form in reviewForm:
+                obj = form.save(commit=False)
+                obj.about_id = id
+                obj.save()
+            c+=1
             context['reviewForm'] = reviewForm
-            c+=1
         
-        eventForm = EventForm(request.POST, request.FILES, prefix='eventForm')
+        eventForm = eventFormSet(request.POST, request.FILES, prefix='eventForm')
         if eventForm.is_valid():
-            eventFormObj = eventForm.save(commit=False)
-            eventFormObj.about_id = obj.id
-            eventForm.save()
-            context['eventForm'] = eventForm
+            for form in eventForm:
+                obj = form.save(commit=False)
+                obj.about_id = id
+                obj.save()
             c+=1
+            context['eventForm'] = eventForm
 
         if c == 4:
             return redirect('index',id)

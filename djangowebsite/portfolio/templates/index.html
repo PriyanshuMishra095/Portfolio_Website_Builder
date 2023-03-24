@@ -51,7 +51,7 @@
             <a href="#home" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
-                    <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+                    <img src="/{{data.icon}}" alt="logo" class="ml-lg-3 m-0">
 
                 </div>
             </a>
@@ -78,7 +78,7 @@
             <div class="inner-wrapper">
                 <nav class="side-nav w-100">
                     <a href="#home" title="Logo" class="logo navbar-brand">
-                        <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
+                        <img src="/{{data.logo}}" alt="logo">
                     </a>
                     <ul class="navbar-nav text-capitalize">
                         <li class="nav-item">
@@ -101,8 +101,12 @@
                         </li>
                     </ul>
                     <div class="text-center sidebar_btn">
-                        <a href="personal-hotspot/download-resume/resume.pdf" download
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
+                        <a href="{% url 'form' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
+                    </div>
+                    <div class="text-center sidebar_btn">
+                        <a href="" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download your Responses</a>
                     </div>
                 </nav>
 
@@ -124,7 +128,6 @@
     <!-- END HEADER -->
 
     <div id="pagepiling">
-
         <!-- START BANNER -->
         <section class="section slide1 p-0" id="home">
             <div class="slider-area" id="slider-area">
@@ -137,7 +140,8 @@
                     <div class="col-12 col-lg-6 text-md-center text-lg-left">
                         <div class="slider-content">
                             <h1 class="main-font text-uppercase"><span class="slider-text px-2"> Hello, I am </span>
-                                <span class="d-block text-yellow"> {{data.work_title}}.</span></h1>
+                                <span class="d-block text-yellow"> {{data.work_title}}.</span>
+                            </h1>
                             <p class="pt-3 alt-font content-para">{{data.work_desc}}</p>
                         </div>
                     </div>
@@ -191,7 +195,8 @@
             <div class="container">
                 <div class="row pb-5">
                     <div class="col-12 col-md-7 pl-md-0">
-                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> {{data.work}}</span></h3>
+                        <h3 class="main-font text-uppercase"><span class="text-yellow d-block"> {{data.work_title}}</span>
+                        </h3>
                         <p class="py-2 alt-font">{{data.work_desc}}</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
@@ -233,34 +238,37 @@
                         <ul class="progress-bar-side">
                             <!-- First Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_1_title}}<span class="float-right"><b
-                                            class="numscroller">{{data.talent_1_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_1_title}}<span
+                                        class="float-right"><b class="numscroller">{{data.talent_1_perc}}</b>%</span>
+                                </h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_1_perc}}"
-                                        aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-yellow" role="progressbar"
+                                        aria-valuenow="{{data.talent_1_perc}}" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </li>
                             <!-- Second Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_2_title}}<span class="float-right"><b
-                                            class="numscroller">{{data.talent_2_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_2_title}}<span
+                                        class="float-right"><b class="numscroller">{{data.talent_2_perc}}</b>%</span>
+                                </h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_2_perc}}"
-                                        aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-yellow" role="progressbar"
+                                        aria-valuenow="{{data.talent_2_perc}}" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </li>
                             <!-- Third Bar -->
                             <li class="custom-progress text-white">
-                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_3_title}}<span class="float-right"><b
-                                            class="numscroller">{{data.talent_3_perc}}</b>%</span></h6>
+                                <h6 class="mb-0 text-capitalize mons-font">{{data.talent_3_title}}<span
+                                        class="float-right"><b class="numscroller">{{data.talent_3_perc}}</b>%</span>
+                                </h6>
 
                                 <div class="progress">
-                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="{{data.talent_3_perc}}"
-                                        aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-yellow" role="progressbar"
+                                        aria-valuenow="{{data.talent_3_perc}}" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </li>
@@ -295,10 +303,16 @@
                                     <div class="events" style="width: 2200px;">
                                         <ol>
                                             {% for event in data.events %}
-                                            <li><a href="#" data-date="{{event.date}}" style="left: 325px;" class="older-event">{{event.date}}</a>
+                                            <li>
+                                                {% if event == data.events.0 %}
+                                                <a href="#" data-date="{{event.date}}"
+                                                    class="older-event selected">{{event.year}}</a>
+                                                {% else %}
+                                                <a href="#" data-date="{{event.date}}"
+                                                    style="left: 200px;">{{event.year}}</a>
+                                                {% endif %}
                                             </li>
                                             {% endfor %}
-
                                         </ol>
                                         <span class="filling-line" aria-hidden="true"></span>
                                     </div>
@@ -314,371 +328,29 @@
                             <!-- Timeline -->
                             <div class="events-content">
                                 <ol>
-                                    <li class="selected" data-date="16/01/2017">
+                                    {% for event in data.events %}
+                                    {% if event == data.events.0 %}
+                                    <li class="selected" data-date="{{event.date}}">
+                                        {% else %}
+                                    <li class="" data-date="{{event.date}}">
+                                        {% endif %}
                                         <!-- Main Content Div -->
                                         <div class="col-12 pl-md-0">
                                             <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">3rd FEBUARY 2001
+                                                <h4 class="text-yellow main-font font-weight-normal">{{event.comp_date}}
                                                 </h4>
-                                                <h2 class="main-font">I had just been born</h2>
+                                                <h2 class="main-font">{{event.event_title}}</h2>
                                             </div>
                                         </div>
                                         <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-3 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Final year project
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="28/02/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">24 Sep 2005</h4>
-                                                <h2 class="main-font">I Took Responsibility In Life</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
+                                        <div class="row" style="width: 100%;">
                                             <div class="sub-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-                                                    eos excepturi minus quae. Autem distinctio ea eius laudantium
-                                                    nostrum. Assumenda distinctio eaque enim eveniet, id quas veritatis.
-                                                    Asperiores, facilis provident.</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-                                                    eos excepturi minus quae. Autem distinctio ea eius laudantium
-                                                    nostrum. Assumenda distinctio eaque enim eveniet, id quas veritatis.
-                                                    Asperiores, facilis provident.</p>
+                                                <p>{{event.desc_1}}</p>
+                                                <p>{{event.desc_2}}</p>
                                             </div>
                                         </div>
                                     </li>
-                                    <li data-date="20/04/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">02 Sep 2007</h4>
-                                                <h2 class="main-font">Started Working With Companies</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-6 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Adipisci,
-                                                        aperiam aut exercitationem facere itaque laboriosam maxime minus
-                                                        molestiae nemo nulla
-                                                        officiis placeat quam quasi quisquam repudiandae </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Assumenda
-                                                        atque cumque ducimus eveniet fugit impedit incidunt ipsam libero
-                                                        maxime, perferendis,
-                                                        quam quasi ratione reiciendis. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="20/05/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">26 Feb 2009</h4>
-                                                <h2 class="main-font">Started Dealing Clients Online </h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-4 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
-                                                    </h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="09/07/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">24 MAY 2011</h4>
-                                                <h2 class="main-font">Established My Own Company</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="sub-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-                                                    eos excepturi minus quae. Autem distinctio ea eius laudantium
-                                                    nostrum. Assumenda distinctio eaque enim eveniet, id quas veritatis.
-                                                    Asperiores, facilis provident.</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-                                                    eos excepturi minus quae. Autem distinctio ea eius laudantium
-                                                    nostrum. Assumenda distinctio eaque enim eveniet, id quas veritatis.
-                                                    Asperiores, facilis provident.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="30/08/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">16 Jan 2013</h4>
-                                                <h2 class="main-font">Successfully Establish My Business </h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-6 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Adipisci,
-                                                        aperiam aut exercitationem facere itaque laboriosam maxime minus
-                                                        molestiae nemo nulla
-                                                        officiis placeat quam quasi quisquam repudiandae </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Assumenda
-                                                        atque cumque ducimus eveniet fugit impedit incidunt ipsam libero
-                                                        maxime, perferendis,
-                                                        quam quasi ratione reiciendis. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="15/09/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">15 MAY 2015</h4>
-                                                <h2 class="main-font">I had graduated from university</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-3 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Final year project
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="01/11/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">20 Aug 2017</h4>
-                                                <h2 class="main-font">Started Working On Expand Business</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-12 pl-md-0">
-                                                <div class="sub-content">
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed
-                                                        suscipit. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="10/12/2017">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">15 MAY 2019</h4>
-                                                <h2 class="main-font">I had graduated from university</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-3 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">What I learned
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-3 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Final year project
-                                                    </h5>
-                                                    <p class="alt-font">Curabitur mollis bibendum luctus. Duis suscipit
-                                                        vitae dui sed suscipit. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="19/01/2018">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">28 Oct 2020</h4>
-                                                <h2 class="main-font">Successful In Expanding Business World Wide </h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-6 pl-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">Major subjects</h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Adipisci,
-                                                        aperiam aut exercitationem facere itaque laboriosam maxime minus
-                                                        molestiae nemo nulla
-                                                        officiis placeat quam quasi quisquam repudiandae </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6 pr-md-0">
-                                                <div class="sub-content">
-                                                    <h5 class="text-uppercase main-font text-yellow">My Achievements
-                                                    </h5>
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Assumenda
-                                                        atque cumque ducimus eveniet fugit impedit incidunt ipsam libero
-                                                        maxime, perferendis,
-                                                        quam quasi ratione reiciendis. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li data-date="03/03/2018">
-                                        <!-- Main Content Div -->
-                                        <div class="col-12 pl-md-0">
-                                            <div class="main-content text-uppercase">
-                                                <h4 class="text-yellow main-font font-weight-normal">15 MAY 2020</h4>
-                                                <h2 class="main-font">Looking Forward For More Opportunities</h2>
-                                            </div>
-                                        </div>
-                                        <!-- Sub Content Div -->
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-12 pl-md-0">
-                                                <div class="sub-content">
-                                                    <p class="alt-font">Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed
-                                                        suscipit. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    {% endfor %}
                                 </ol>
                             </div>
                         </div>
@@ -698,171 +370,39 @@
                         <p class="py-1 alt-font">I believe in art and that is my passion throughout my life.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">20</h2>
+                        <h2 class="m-0 text-yellow main-font">05</h2>
                         <p class="alt-font">Portfolio Items</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="team-classic owl-team owl-carousel text-center">
-                            <!-- Item 1 -->
+                            {% for port in data.portfolio %}
                             <div class="item">
                                 <div class="team-data-img">
-                                    <a href="https://dribbble.com/shots/14575988-Css-Neumorphic-Login-Form-Design"
-                                        data-fancybox="images">
+                                    <a href="" data-fancybox="images">
                                         <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/14575988/media/e7451c93c76301cbd8e0064e82ff3440.png?compress=1&resize=1200x900&vertical=top"
-                                                alt="team" class="img-responsive" data-no-retina>
+                                            <img src="/{{port.image}}" alt="team" class="img-responsive" data-no-retina>
                                             <div class="overlay-text center-block">
                                                 <div class="cases-image-inner">
                                                     <span class="cases-line top"></span>
                                                     <span class="cases-line top-right"></span>
                                                     <span class="cases-line bottom"></span>
                                                     <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Strategy Buildup</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Corporate Website</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17985809/media/7f3f2dc949b0b94697613b442a08e2b6.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17985809/media/7f3f2dc949b0b94697613b442a08e2b6.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Business Planning
+                                                    <h6 class="text-white text-uppercase alt-font">{{port.image_desc}}
                                                     </h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                     <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">My Presentation</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
+                                        <h5 class="text-yellow main-font mb-2 text-uppercase">{{port.item_title}}</h5>
+                                        <p class="text-capitalize">{{port.desc}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Item 3 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17778694/media/c0e06aabf0e5ed8b361b8d90a0fe7cc9.png?compress=1&resize=1200x900&vertical=top"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17778694/media/c0e06aabf0e5ed8b361b8d90a0fe7cc9.png?compress=1&resize=1200x900&vertical=top"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Creative Ideas</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Graphic Portfolio</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17613934/media/172a082c1d530b337daa51f5a2198bae.png"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17613934/media/172a082c1d530b337daa51f5a2198bae.png"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Strategy Buildup</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Corporate Website</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/17951998/media/32c5da9f4e40637698987c369e155e62.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/17951998/media/32c5da9f4e40637698987c369e155e62.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Business Planning
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">My Presentation</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 6 -->
-                            <div class="item">
-                                <div class="team-data-img">
-                                    <a href="https://cdn.dribbble.com/users/4502458/screenshots/14901752/media/da35413e975b19705e598bb7e482c2cc.jpg"
-                                        data-fancybox="images">
-                                        <div class="single-work">
-                                            <img src="https://cdn.dribbble.com/users/4502458/screenshots/14901752/media/da35413e975b19705e598bb7e482c2cc.jpg"
-                                                alt="team" class="img-responsive" data-no-retina>
-                                            <div class="overlay-text center-block">
-                                                <div class="cases-image-inner">
-                                                    <span class="cases-line top"></span>
-                                                    <span class="cases-line top-right"></span>
-                                                    <span class="cases-line bottom"></span>
-                                                    <span class="cases-line bottom-left"></span>
-                                                    <h6 class="text-white text-uppercase alt-font">Creative Ideas</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="portfolio-content">
-                                        <h5 class="text-yellow main-font mb-2 text-uppercase">Graphic Portfolio</h5>
-                                        <p class="text-capitalize">Curabitur mollis bibendum luctus. Duis suscipit vitae
-                                            dui sed suscipit. </p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                         <a class="circle ini-customPrevBtn" id="team-circle-left">
                             <i class="lni lni-arrow-left-circle"></i>
@@ -887,7 +427,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">200+</h2>
+                        <h2 class="m-0 text-yellow main-font">005+</h2>
                         <p class="alt-font">Clients Worldwide</p>
                     </div>
                 </div>
@@ -909,12 +449,12 @@
                                     <img src="/{{review.image}}" alt="">
                                 </div>
                                 <div class="testimonial-tittle mt-3 mb-3">
-                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">{{review.name}}
+                                    <h4 class="mb-0 text-yellow main-font font-weight-normal text-uppercase">
+                                        {{review.name}}
                                     </h4>
                                 </div>
                             </div>
                             {% endfor %}
-                            
                         </div>
                     </div>
                 </div>
@@ -933,8 +473,10 @@
                         <p class="py-2 alt-font">I am available all the time for any project acording to my skills.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font font-weight-bold">{{data.insta_ID}}</h2>
-                        <p class="alt-font">My Instagram ID</p>
+                        <h2 class="m-0 text-yellow main-font font-weight-bold">
+                            <a href="{{data.insta_ID}}">{{data.name}}</a>
+                        </h2>
+                        <p class="alt-font">Click above for my Instagram ID</p>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form-data">
@@ -1000,15 +542,15 @@
 
     <!-- JavaScript -->
     <script src="{% static 'js/bundle.min.js' %}"></script>
+
     <!-- Plugin Js -->
-
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 
     <script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
     <script src="{% static 'js/jquery.appear.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
     <!-- CUSTOM JS -->
     <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
     <script src="{% static 'js/timeline.js' %}"></script>
