@@ -51,7 +51,7 @@
             <a href="#home" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
-                    <img src="/{{data.logo}}" alt="logo" class="ml-lg-3 m-0">
+                    <img src="/{{data.icon}}" alt="logo" class="ml-lg-3 m-0">
 
                 </div>
             </a>
@@ -100,10 +100,14 @@
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <!-- <div class="text-center sidebar_btn">
-                        <a href="personal-hotspot/download-resume/resume.pdf" download
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
-                    </div> -->
+                    <div class="text-center sidebar_btn">
+                        <a href="{% url 'form' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
+                    </div>
+                    <div class="text-center sidebar_btn">
+                        <a href="" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download your Responses</a>
+                    </div>
                 </nav>
 
                 <div class="side-footer w-100">
@@ -366,7 +370,7 @@
                         <p class="py-1 alt-font">I believe in art and that is my passion throughout my life.</p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">20</h2>
+                        <h2 class="m-0 text-yellow main-font">05</h2>
                         <p class="alt-font">Portfolio Items</p>
                     </div>
                 </div>
@@ -423,7 +427,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-md-5 text-md-right pt-4 pt-md-0">
-                        <h2 class="m-0 text-yellow main-font">200+</h2>
+                        <h2 class="m-0 text-yellow main-font">005+</h2>
                         <p class="alt-font">Clients Worldwide</p>
                     </div>
                 </div>

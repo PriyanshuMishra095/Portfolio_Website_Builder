@@ -77,7 +77,7 @@
             text-align: center;
         }
         .slider-area{
-            background-image: url("{% static 'img/contact-bg.png' %}");
+            background-image: url("{% static 'img/contact-bg.jpg' %}");
             align-items: flex-start;
         }
         form {
@@ -117,10 +117,10 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' '55vp' %}" title="Logo" class="logo">
+            <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
-                    <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+                    <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
                 </div>
             </a>
 
@@ -145,8 +145,8 @@
             </span>
             <div class="inner-wrapper">
                 <nav class="side-nav w-100">
-                    <a href="{% url 'index' '55vp' %}" title="Logo" class="logo navbar-brand">
-                        <img src="{% static 'img/stumbleupon copy.png' %}" alt="logo">
+                    <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo navbar-brand">
+                        <img src="{% static 'img/slider-img - copy.png' %}" alt="logo">
                     </a>
                     <ul class="navbar-nav text-capitalize">
                         <li class="nav-item">
@@ -168,11 +168,19 @@
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
                     </ul>
+                    <div class="text-center sidebar_btn">
+                        <a href="{% url 'form' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
+                    </div>
+                    <div class="text-center sidebar_btn">
+                        <a href="" download
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download your Responses</a>
+                    </div>
                     <!-- <div class="text-center sidebar_btn">
                         <a href="personal-hotspot/download-resume/resume.pdf" download
                             class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
-                    </div>
-                </nav> -->
+                    </div> -->
+                </nav>
 
                     <div class="side-footer w-100">
                         <ul class="social-icons-simple">
@@ -196,7 +204,7 @@
 
     <div id="pagepiling">
     
-        <section class="section slide5 contact-bg" id="contact" style="overflow-y: auto;">
+        <section class="section slide1 p-0" id="home" style="overflow-y: auto;">
             <div class="slider-area" id="slider-area">
                 <div class="xyz">
                 <section class="container">
@@ -221,7 +229,7 @@
                                 <h4>Reviews</h4>
                                 <div>{{data.reviewForm}}</div>
                             </div>
-                            <button type="submit" class="btn btn-medium btn-rounded btn-yellow text-capitalize contact_btn">Submit</button>
+                            <button type="submit" class="btn btn-medium btn-rounded btn-yellow text-capitalize ">Submit</button>
                         </form>
                     </div>
                     
@@ -265,7 +273,6 @@
         <!-- CUSTOM JS -->
         <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
         <script src="{% static 'js/timeline.js' %}"></script>
-        <script src="{% static 'js/contact_us.js' %}"></script>
         <script src="{% static 'js/script.js' %}"></script>
 </body>
 
