@@ -8,6 +8,8 @@ from django.shortcuts import render, redirect
 from .models import About, Review, Event, PortfolioItem
 from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
 
+
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def index(request,id):
@@ -59,10 +61,32 @@ def index(request,id):
                }}
     return render(request, "index.html", context)
 
-def form(request):
-    portNum = 5
-    reviewNum = 5
-    eventNum = 5
+def home(request):
+    context = {"user":request.user}
+    return render(request, "home.html",context)
+def login(request):
+    context = {"user":request.user}
+    return render(request, "login.html",context)
+def register(request):
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+
+            return redirect("login")
+    context = {"form":form}
+    return render(request, "register.html",context)
+def profile(request):
+    context = {"user":request.user}
+    return render(request, "profile.html",context)
+
+def confirmation(request):
+    return render(request, "confirm.html")
+def form(request, port,review, event):
+    portNum = port
+    reviewNum = review
+    eventNum = event
 
     form = AboutForm(prefix='aboutForm')
     portFormSet = formset_factory(PortfolioItemForm, extra=portNum)
