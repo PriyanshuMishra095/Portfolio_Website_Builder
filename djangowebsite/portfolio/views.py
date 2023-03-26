@@ -5,13 +5,19 @@ from django.shortcuts import render
 from .models import About, Review, Event, PortfolioItem
 
 from django.shortcuts import render, redirect
-from .models import About, Review, Event, PortfolioItem
+from .models import About, Review, Event, PortfolioItem, User
 from .forms import AboutForm, ReviewForm, EventForm, PortfolioItemForm
 
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate,login as do_login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
+
+import time
 # Create your views here.
 
+@login_required
 def index(request,id):
     a = About.objects.get(id=id)
     r = Review.objects.filter(about_id=a.id)
@@ -65,24 +71,52 @@ def home(request):
     context = {"user":request.user}
     return render(request, "home.html",context)
 def login(request):
-    context = {"user":request.user}
+    context = {'type': 'login'}
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                do_login(request, user)
+                return redirect('profile')
+        else:
+            context.update({"error": True})
+    else:
+        form = AuthenticationForm()
+
+    for field in form.fields:
+        form.fields[field].widget.attrs.update({"placeholder": ""})
+    context.update({"form": form})
     return render(request, "login.html",context)
 def register(request):
     form = UserCreationForm()
     if request.method == "POST":
-        form = UserRegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
 
             return redirect("login")
     context = {"form":form}
     return render(request, "register.html",context)
+
+@login_required
 def profile(request):
     context = {"user":request.user}
     return render(request, "profile.html",context)
 
+@login_required
 def confirmation(request):
+    if request.method == "POST":
+        portText = request.POST.get("portText")
+        reviewText = request.POST.get("reviewText")
+        eventText = request.POST.get("eventText")
+
+        return redirect("form",portText,reviewText,eventText)
     return render(request, "form.html")
+
+@login_required
 def form(request, port,review, event):
     portNum = port
     reviewNum = review
@@ -143,6 +177,7 @@ def form(request, port,review, event):
             context['eventForm'] = eventForm
 
         if c == 4:
+            user_obj = User(portfolioIDs = {time.time():id})
             return redirect('index',id)
     
     return render(request, 'about.html', context)
