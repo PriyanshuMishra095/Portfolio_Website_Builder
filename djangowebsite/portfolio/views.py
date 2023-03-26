@@ -109,12 +109,12 @@ def profile(request):
 @login_required
 def confirmation(request):
     if request.method == "POST":
-        portText = request.method.get("portText")
-        reviewText = request.method.get("reviewText")
-        eventText = request.method.get("eventText")
+        portText = request.POST.get("portText")
+        reviewText = request.POST.get("reviewText")
+        eventText = request.POST.get("eventText")
 
         return redirect("form",portText,reviewText,eventText)
-    return render(request, "confirm.html")
+    return render(request, "form.html")
 
 @login_required
 def form(request, port,review, event):
