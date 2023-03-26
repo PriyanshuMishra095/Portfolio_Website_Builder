@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User as BaseUser
 from django.db import models
 
 # Create your models here.
@@ -47,3 +48,9 @@ class PortfolioItem(models.Model):
     image_desc = models.CharField(max_length=100) 
     item_title = models.CharField(max_length=100)
     desc = models.CharField(max_length=300) 
+
+
+
+class User(models.Model):
+    user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
+    portfolioIDs = models.JSONField()
