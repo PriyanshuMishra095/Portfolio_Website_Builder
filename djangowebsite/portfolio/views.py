@@ -82,7 +82,7 @@ def profile(request):
     return render(request, "profile.html",context)
 
 def confirmation(request):
-    return render(request, "confirm.html")
+    return render(request, "form.html")
 def form(request, port,review, event):
     portNum = port
     reviewNum = review
