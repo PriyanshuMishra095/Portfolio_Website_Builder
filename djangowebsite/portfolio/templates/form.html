@@ -172,6 +172,20 @@
                         <a href="{% url 'form_confirm' %}"
                             class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
                     </div>
+                    {% if user.is_authenticated %}
+                    <div class="text-center sidebar_btn">
+                        <a href="{% url 'profile' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Profile</a>
+                    </div>
+                    <div class="text-center sidebar_btn">
+                        <a href="{% url 'logout' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Logout</a>
+                    </div>
+                    {% else %}
+                    <div class="text-center sidebar_btn">
+                        <a href="{% url 'login' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Login</a>
+                    {% endif %}
                     <div class="text-center sidebar_btn">
                         <a href="" download
                             class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download your Responses</a>
@@ -217,11 +231,10 @@
                 </section>
                 <div class="abcd">
                         <div><p class="py-2-alt-font">Let's get you a Beautiful Website! <br>Fill in the details below and click the submit button to see the magic ;)</p>
-                            </div><form action="" method="post" class="contact-form" enctype="multipart/form-data">
+                            </div><form action="" method="post" class="contact-form">
                             {% csrf_token %}
 
                             <div id="actualForm">
-                                <h4></h4>
                                 <label for="input1">Enter the number of Portfolio items you want to have:</label>
                                 <input id="input1" type="number" name="portText"/>
                                 <label for="input2">Enter the number of Events you want to have:</label>

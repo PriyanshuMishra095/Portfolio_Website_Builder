@@ -1,16 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% load static %}<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <form action="" method="post">  
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Author -->
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description"
+        content="MegaOne is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose studio and portfolio HTML5 template with 8 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords"
+        content="Creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, studio, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, studio, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Priyanshu's Portfolio Website</title>
+    <!-- Favicon -->
+    <link href="{% static '/img/slider-img - Copy.png' %}" rel="icon">
+    <!-- Bundle -->
+    <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <!-- Plugin Css -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+
+    <!-- Style Sheet -->
+    <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.pagepiling.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        
+        #actualForm div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 12pt;
+            box-sizing: border-box;
+            align-items: center;
+            width: 100%;
+        }
+
+        #actualForm {
+            display: flex;
+            flex-direction: column;
+            gap: 12pt;
+            align-items: center;
+        }
+
+        .abcd {
+            padding: 12pt;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-rows: 1% 112%;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .abcd h4{
+            text-align: center;
+        }
+        .xyz{
+            display: grid;
+            grid-template-rows: 2fr 7fr;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .xyz h3, .xyz p, .xyz span, .xyz h5{
+            text-align: center;
+        }
+        .slider-area{
+            background-image: url("{% static 'img/contact-bg.jpg' %}");
+            align-items: flex-start;
+        }
+    </style>
+ </head> {% block 'title' %}
+<title>Login</title>
+{% endblock %} {% block 'content' %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <!-- START HEADER -->
+    <header>
+        <!--Navigation-->
+        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <a href="{% url 'home' %}" title="Logo" class="logo">
+                <!--Logo Default-->
+                <div class="mega-logo">
+                    <img src="{% static 'img/slider-img - copy.png' %}" alt="HOme" class="ml-lg-3 m-0">
+                </div>
+            </a>
+        </nav>
+            </div>
+        </div>
+        <a id="close_side_menu" href="javascript:void(0);"></a>
+    </header>
+    <!-- END HEADER -->
+    <div id="pagepiling">
+    
+        <section class="section slide1 p-0" id="home" style="overflow-y: auto;">
+            <div class="slider-area" id="slider-area">
+                <div class="xyz">
+                <section class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="main-font text-uppercase"><span class="text-yellow d-block text-uppercase"> Build Your Portfolio </span> <span> Let Your Art Speak </span></h3>
+                            <p class="py-2 alt-font"><h5>We'll help you showcase your artwork to the world.</h5></p>
+                        </div>
+                    </div>
+                </section>
+
+<main>
+  <div class="form-body-wrapper">
+    <section class="main-content">
+      <form class="register-form" action="" method="post">
         {% csrf_token %}
-        {{form}}
-        <button type="submit">Register</button>
-    </form>
-</body>
-</html>
+        <div class="type-toggle-wrapper">
+          <a href="{% url 'login' %}">
+            <span>Login</span>
+          </a>
+          <a href="{% url 'register' %}">
+            <span>Register</span>
+          </a>
+        </div>
+        <div class="form-content">
+          <div class="input-wrapper">
+            {% for field in form %}
+            <div class="input-container">{{field}} {{field.label_tag}}</div>
+            {{field.errors}}
+            {% endfor %}
+          </div>
+          
+          <button class="btn btn-medium btn-rounded btn-yellow text-capitalize" type="submit" >Register</button>{% if error %}
+          <p style="color: red">Credentials invalid!</p>
+          {% endif %}
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+<div class="bg-wrapper"></div>
+<script>
+  let toggleWrapper = document.querySelector(".type-toggle-wrapper");
+  let bgWrapper = document.querySelector(".bg-wrapper");
+  let loginDiv = document.querySelector("main");
+  let errorItems = document.querySelectorAll(".errorlist");
+
+  let bgElems = 0;
+  for (let index = 0; index < toggleWrapper.childElementCount; index++) {
+    const element = toggleWrapper.children[index];
+    element.href += "?source=registration_page";
+  }
+  for (let index = 0; index < errorItems.length; index++) {
+    const element = errorItems[index];
+  }
+</script>
+
+<!-- JavaScript -->
+<script src="{% static 'js/bundle.min.js' %}"></script>
+
+<!-- Plugin Js -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+<script src='https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js'></script>
+<script src="{% static 'js/jquery.appear.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        
+        <!-- CUSTOM JS -->
+        <script src="{% static 'js/jquery.pagepiling.min.js' %}"></script>
+        <script src="{% static 'js/timeline.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
+        {%endblock%}

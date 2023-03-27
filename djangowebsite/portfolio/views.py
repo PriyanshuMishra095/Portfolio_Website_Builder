@@ -13,7 +13,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate,login as do_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-
+from django.contrib.auth.models import User as BaseUser
 import time
 # Create your views here.
 
@@ -96,14 +96,16 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-
+            obj = User(user=user, portfolioIDs={})
+            obj.save()
             return redirect("login")
     context = {"form":form}
     return render(request, "register.html",context)
 
 @login_required
 def profile(request):
-    context = {"user":request.user}
+    user = User.objects.get(user=request.user)
+    context = {"user":user}
     return render(request, "profile.html",context)
 
 @login_required
@@ -118,6 +120,7 @@ def confirmation(request):
 
 @login_required
 def form(request, port,review, event):
+    user_obj   = User.objects.get(user=request.user).user
     portNum = port
     reviewNum = review
     eventNum = event
@@ -132,7 +135,7 @@ def form(request, port,review, event):
     eventForm = eventFormSet(prefix='eventForm')
 
     context = {"data":{
-            "img":"img/slider-img.png",'aboutForm': form,"portForm":portForm, 'reviewForm':reviewForm, 'eventForm':eventForm}}
+            "img":"img/slider-img.png",'aboutForm': form,"portForm":portForm, 'reviewForm':reviewForm, 'eventForm':eventForm},"user":user_obj}
 
     c = 0
     if request.method == 'POST':
@@ -177,7 +180,10 @@ def form(request, port,review, event):
             context['eventForm'] = eventForm
 
         if c == 4:
-            user_obj = User(portfolioIDs = {time.time():id})
+            user_obj = User.objects.get(user=request.user)
+            print(id,time.time())
+            user_obj.portfolioIDs.update({time.time():id})
+            user_obj.save()
             return redirect('index',id)
     
     return render(request, 'about.html', context)

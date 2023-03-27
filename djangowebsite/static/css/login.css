@@ -1,0 +1,154 @@
+@import "./components.css";
+:root {
+  --prim-500: #ffc107;
+  --scnd-500: #d7263d;
+  --bg-500: #000000;
+  --padding: 12pt;
+  --border-radius: 3pt;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*::-moz-selection {
+  background-color: var(--prim-500);
+  color: var(--bg-500);
+}
+
+*::selection {
+  background-color: var(--prim-500);
+  color: var(--bg-500);
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body main {
+  width: 40vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition-duration: 0.5s;
+  border-radius: var(--border-radius) !important;
+  color: var(--prim-500);
+  background-color: var(--bg-500);
+  overflow: clip;
+  box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.8666666667);
+  border-radius: 18pt;
+}
+body main .form-body-wrapper {
+  display: grid;
+}
+body main .form-body-wrapper section {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .form-body-wrapper .main-title {
+  padding: 24pt;
+  box-sizing: border-box;
+}
+body main .form-body-wrapper .main-content {
+  padding-top: 0;
+  box-sizing: border-box;
+}
+body main .form-body-wrapper .main-content form {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6pt;
+  background-color: var(--prim-500);
+  padding: 8pt;
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
+  justify-content: initial;
+  gap: 0;
+}
+body main .form-body-wrapper .main-content form .type-toggle-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+body main .form-body-wrapper .main-content form .type-toggle-wrapper a {
+  width: 100%;
+  height: 48pt;
+  background: var(--bg-500);
+  border: 0;
+  color: var(--prim-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: var(--prim-500);
+  color: var(--bg-500);
+  border-radius: 3pt 3pt 0pt 0pt;
+}
+body main .form-body-wrapper .main-content form .form-content {
+  width: 100%;
+  background-color: var(--bg-500);
+  padding: var(--padding);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12pt;
+}
+body main .form-body-wrapper .main-content form .form-content .input-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  gap: 12pt;
+  padding: var(--padding);
+  box-sizing: border-box;
+}
+body main .form-body-wrapper .main-content form .form-content .input-wrapper .input-container {
+  width: 100%;
+}
+body main .form-body-wrapper .main-content .login-form .type-toggle-wrapper a:nth-child(1) {
+  background-color: var(--bg-500);
+  color: var(--prim-500);
+}
+body main .form-body-wrapper .main-content .login-form .form-content {
+  border-radius: 0pt 3pt 3pt 3pt;
+}
+body main .form-body-wrapper .main-content .login-form .form-content .input-container:nth-child(1), body main .form-body-wrapper .main-content .login-form .form-content .input-container:nth-child(2) {
+  /* grid-column: 1/1; */
+}
+body main .form-body-wrapper .main-content .register-form .type-toggle-wrapper a:nth-child(2) {
+  background-color: var(--bg-500);
+  color: var(--prim-500);
+}
+body main .form-body-wrapper .main-content .register-form .form-content {
+  border-radius: 3pt 0pt 3pt 3pt;
+}
+body main .form-body-wrapper .main-content .register-form .form-content .input-container:nth-child(3), body main .form-body-wrapper .main-content .register-form .form-content .input-container:nth-child(4) {
+  grid-column: 1/3;
+}
+
+@media screen and (max-width: 660px) {
+  body .bg-wrapper {
+    --deg: 180deg;
+    grid-template-columns: unset;
+    grid-template-rows: repeat(7, 1fr);
+  }
+  body main {
+    width: 80vw;
+  }
+  body main .form-body-wrapper {
+    width: 100%;
+  }
+}/*# sourceMappingURL=login.css.map */
