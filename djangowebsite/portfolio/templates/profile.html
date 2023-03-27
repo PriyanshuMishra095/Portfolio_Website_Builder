@@ -131,7 +131,7 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo">
+            <a href="{% url 'home' %}" title="Home" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
                     <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
@@ -184,21 +184,18 @@
                     </ul>
                     <div class="text-center sidebar_btn">
                         <a href="{% url 'form_confirm' %}"
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Build Another Website</a>
                     </div>
                     {% if user.is_authenticated %}
                     <div class="text-center sidebar_btn">
-                        <a href="{% url 'profile' %}"
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Profile</a>
+                        <a href="{% url 'login' %}"
+                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Login</a>
                     </div>
+                    {% else %}
                     <div class="text-center sidebar_btn">
                         <a href="{% url 'logout' %}"
                             class="btn btn-medium btn-rounded btn-yellow text-capitalize">Logout</a>
                     </div>
-                    {% else %}
-                    <div class="text-center sidebar_btn">
-                        <a href="{% url 'login' %}"
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Login</a>
                     {% endif %}
                     <div class="text-center sidebar_btn">
                         <a href="" download

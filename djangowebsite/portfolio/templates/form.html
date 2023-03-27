@@ -18,7 +18,7 @@
     <meta name="keywords"
         content="Creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, studio, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, studio, masonry, grid, faq">
     <!-- Page Title -->
-    <title>Priyanshu's Portfolio Website</title>
+    <title>Portfolio Website Builder</title>
     <!-- Favicon -->
     <link href="{% static '/img/slider-img - Copy.png' %}" rel="icon">
     <!-- Bundle -->
@@ -117,7 +117,7 @@
     <header>
         <!--Navigation-->
         <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo">
+            <a href="{% url 'home' %}" title="Home" class="logo">
                 <!--Logo Default-->
                 <div class="mega-logo">
                     <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
@@ -148,30 +148,7 @@
                     <a href="{% url 'index' 'K9k7' %}" title="Logo" class="logo navbar-brand">
                         <img src="{% static 'img/slider-img - copy.png' %}" alt="logo">
                     </a>
-                    <ul class="navbar-nav text-capitalize">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#timeline">Timeline</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#testimonial">Testimonials</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <div class="text-center sidebar_btn">
-                        <a href="{% url 'form_confirm' %}"
-                            class="btn btn-medium btn-rounded btn-yellow text-capitalize">Form</a>
-                    </div>
+
                     {% if user.is_authenticated %}
                     <div class="text-center sidebar_btn">
                         <a href="{% url 'profile' %}"
