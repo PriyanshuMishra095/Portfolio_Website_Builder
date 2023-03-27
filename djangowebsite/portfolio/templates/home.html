@@ -1,158 +1,183 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static '/img/slider-img - Copy.png' %}"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-    {% block 'title' %}
-    <title>Home - Portfolio Website Builder</title>
-    {% endblock %} {% block 'style' %}
-    <style>
-      body {
-        background-image: url("{% static '/img/phupwlp.png' %}");
-      }
-    </style>
-        <!-- Bundle -->
-        <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
-        <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-        <!-- Plugin Css -->
-        <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-        <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
-        <!-- Style Sheet -->
-        <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/jquery.pagepiling.css' %}" rel="stylesheet">
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    {% endblock %}
-  </head>
-  <body>
-    <header>
 
-      <!--Navigation-->
-      <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-          <a href="{% url 'home' %}" title="Home" class="logo">
-              <!--Logo Default-->
-              <div class="mega-logo">
-                  <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
-              </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{% static '/img/slider-img - Copy.png' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  {% block 'title' %}
+  <title>Home - Portfolio Website Builder</title>
+  {% endblock %} {% block 'style' %}
+  <style>
+    body {
+      background-image: url("{% static '/img/phupwlp.png' %}");
+    }
+  </style>
+  <!-- Bundle -->
+  <link href="{% static 'css/bundle.min.css' %}" rel="stylesheet">
+  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+  <!-- Plugin Css -->
+  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+  <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <!-- Style Sheet -->
+  <link href="{% static 'css/tootik.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/line-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/jquery.pagepiling.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <style>
+    .main-content{
+      gap:12pt
+    }
+    .card {
+  font-weight: bold;
+  padding: 1em;
+  text-align: right;
+  color: #181a1a;
+  
+  box-shadow: 0 1px 5px #ffd70099;
+  
+  border-radius: 15pt;
+  background: transparent;
+  background-size: cover;
+  
+  position: relative;
+  
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+  padding: 0;
+  overflow: hidden;
+}
+
+.card:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #ffd70044;
+}
+
+  </style>
+  {% endblock %}
+</head>
+
+<body>
+  <header>
+
+    <!--Navigation-->
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+      <a href="{% url 'home' %}" title="Home" class="logo">
+        <!--Logo Default-->
+        <div class="mega-logo">
+          <img src="{% static 'img/slider-img - copy.png' %}" alt="logo" class="ml-lg-3 m-0">
+        </div>
+      </a>
+
+      <!--Side Menu Button-->
+      <div class="navigation-toggle">
+        <ul class="slider-social toggle-btn my-0">
+          <li>
+            <a href="javascript:void(0);" class="sidemenu_btn" id="sidemenu_toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--Side Nav-->
+    <div class="side-menu hidden">
+      <span id="btn_sideNavClose">
+        <i class="lni lni-plus btn-close"></i>
+      </span>
+      <div class="inner-wrapper">
+        <nav class="side-nav w-100">
+          <a href="{% url 'home' %}" title="Home" class="logo navbar-brand">
+            <img src="{% static 'img/slider-img - copy.png' %}" alt="logo">
           </a>
 
-          <!--Side Menu Button-->
-          <div class="navigation-toggle">
-              <ul class="slider-social toggle-btn my-0">
-                  <li>
-                      <a href="javascript:void(0);" class="sidemenu_btn" id="sidemenu_toggle">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                      </a>
-                  </li>
-              </ul>
+          {% if user.is_authenticated %}
+          <div class="text-center sidebar_btn">
+            <a href="{% url 'profile' %}" class="btn btn-medium btn-rounded btn-yellow text-capitalize">Profile</a>
           </div>
-      </nav>
-
-      <!--Side Nav-->
-      <div class="side-menu hidden">
-          <span id="btn_sideNavClose">
-              <i class="lni lni-plus btn-close"></i>
-          </span>
-          <div class="inner-wrapper">
-              <nav class="side-nav w-100">
-                  <a href="{% url 'home' %}" title="Home" class="logo navbar-brand">
-                      <img src="{% static 'img/slider-img - copy.png' %}" alt="logo">
-                  </a>
-
-                  {% if user.is_authenticated %}
-                  <div class="text-center sidebar_btn">
-                      <a href="{% url 'profile' %}"
-                          class="btn btn-medium btn-rounded btn-yellow text-capitalize">Profile</a>
-                  </div>
-                  <div class="text-center sidebar_btn">
-                      <a href="{% url 'logout' %}"
-                          class="btn btn-medium btn-rounded btn-yellow text-capitalize">Logout</a>
-                  </div>
-                  {% else %}
-                  <div class="text-center sidebar_btn">
-                      <a href="{% url 'login' %}"
-                          class="btn btn-medium btn-rounded btn-yellow text-capitalize">Login</a>
-                  <div class="text-center sidebar_btn">
-                      <a href="{% url 'register' %}"
-                          class="btn btn-medium btn-rounded btn-yellow text-capitalize">Register</a>
-                  {% endif %}
-                  <!-- <div class="text-center sidebar_btn">
+          <div class="text-center sidebar_btn">
+            <a href="{% url 'logout' %}" class="btn btn-medium btn-rounded btn-yellow text-capitalize">Logout</a>
+          </div>
+          {% else %}
+          <div class="text-center sidebar_btn">
+            <a href="{% url 'login' %}" class="btn btn-medium btn-rounded btn-yellow text-capitalize">Login</a>
+            <div class="text-center sidebar_btn">
+              <a href="{% url 'register' %}" class="btn btn-medium btn-rounded btn-yellow text-capitalize">Register</a>
+              {% endif %}
+              <!-- <div class="text-center sidebar_btn">
                       <a href="personal-hotspot/download-resume/resume.pdf" download
                           class="btn btn-medium btn-rounded btn-yellow text-capitalize">Download Resume</a>
                   </div> -->
-              </nav>
+        </nav>
 
-                  <div class="side-footer w-100">
-                      <ul class="social-icons-simple">
-                          <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
-                              </a> </li>
-                          <li><a class="social-icon" href="javascript:void(0)"><i
-                                      class="lni lni-instagram-original"></i>
-                              </a> </li>
-                          <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a>
-                          </li>
-                          <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a>
-                          </li>
-                      </ul>
-                      <p>&copy; Priyanshu Mishra</p>
-                  </div>
-          </div>
+        <div class="side-footer w-100">
+          <ul class="social-icons-simple">
+            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i>
+              </a> </li>
+            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-instagram-original"></i>
+              </a> </li>
+            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter"></i> </a>
+            </li>
+            <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin"></i> </a>
+            </li>
+          </ul>
+          <p>&copy; Priyanshu Mishra</p>
+        </div>
       </div>
-      <a id="close_side_menu" href="javascript:void(0);"></a>
-  <!-- END HEADER -->
-      
-    </header>
-    <div id="pagepiling"></div>
-    {% block 'content' %}
+    </div>
+    <a id="close_side_menu" href="javascript:void(0);"></a>
+    <!-- END HEADER -->
 
-    <main class="main-content">
-      <h1>Portfolio Website Builder</h1>
-      <img src="{% static 'img/slider-img - copy.png' %}" alt="Made by Priyanshu Mishra" />
-      <nav class="home-nav">
+  </header>
+  <div id="pagepiling"></div>
+  {% block 'content' %}
+
+  <main class="main-content">
+    <h1>Portfolio Website Builder</h1>
+    <div class="card"><img class="glow"  src="{% static 'img/slider-img - copy.png' %}" alt="Made by Priyanshu Mishra" /></div>
+    <nav class="home-nav">
       <ul>
-          <li >
-            <a  href="{% url 'home' %}">Home</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li >
-            <a  href="{% url 'profile' %}">Profile</a>
-          </li>
-          <li >
-            <a  href="{% url 'logout' %}">Logout</a>
-          </li>
-          {% else %}
-          <li >
-            <a  href="{% url 'login' %}">Login</a>
-          </li>
-          <li >
-            <a  href="{% url 'register' %}">Register</a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-      <!-- <p class="home-quote">"If you don't like to read, you haven't found the right book yet!" <span>~ J. K. Rowling</span></p>
+        <li>
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'register' %}">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- <p class="home-quote">"If you don't like to read, you haven't found the right book yet!" <span>~ J. K. Rowling</span></p>
       <img src="{% static 'bg.jpg' %}" alt="" /> -->
-    </main>
-    {% endblock %}
-    <footer>
-      <p>© Priyanshu Mishra</p>
-      <!-- <button onclick="themeToggle(this)" data-theme = "light">
+  </main>
+  {% endblock %}
+  <footer>
+    <p>© Priyanshu Mishra</p>
+    <!-- <button onclick="themeToggle(this)" data-theme = "light">
         <ion-icon name="sunny"></ion-icon>
       </button> -->
-    </footer>
-    <!-- <script>
+  </footer>
+  <!-- <script>
       function themeToggle(button) {
         let name = button.getAttribute("data-theme")
         if(name=="moon"){
@@ -174,19 +199,19 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script> -->
 
-    <!-- Start Copyright -->
-    <div class="slider-bottom">
-      <div class="slider-footer w-auto">
-          <ul class="social-icons-simple">
-              <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a> </li>
-              <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
-              </li>
-              <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a> </li>
-              <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>
-              </li>
-          </ul>
-      </div>
-      <span class="slider-copyright text-grey">{{data.name}}</span>
+  <!-- Start Copyright -->
+  <div class="slider-bottom">
+    <div class="slider-footer w-auto">
+      <ul class="social-icons-simple">
+        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-facebook-filled"></i> </a> </li>
+        <li><a class="social-icon" href="{{data.insta_ID}}"><i class="lni lni-instagram-original"></i> </a>
+        </li>
+        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-twitter-filled"></i> </a> </li>
+        <li><a class="social-icon" href="javascript:void(0)"><i class="lni lni-linkedin-original"></i> </a>
+        </li>
+      </ul>
+    </div>
+    <span class="slider-copyright text-grey">{{data.name}}</span>
   </div>
 
   <!-- JavaScript -->
@@ -205,6 +230,54 @@
   <script src="{% static 'js/timeline.js' %}"></script>
   <script src="{% static 'js/contact_us.js' %}"></script>
   <script src="{% static 'js/script.js' %}"></script>
+  <script>
+    const $card = document.querySelector('.card');
+    let bounds;
 
-  </body>
+    function rotateToMouse(e) {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const leftX = mouseX - bounds.x;
+      const topY = mouseY - bounds.y;
+      const center = {
+        x: leftX - bounds.width / 2,
+        y: topY - bounds.height / 2
+      }
+      const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
+
+      $card.style.transform = `
+    scale3d(1.07, 1.07, 1.07)
+    rotate3d(
+      ${center.y / 100},
+      ${-center.x / 100},
+      0,
+      ${Math.log(distance) * 2}deg
+    )
+  `;
+
+      $card.querySelector('.glow').style.backgroundImage = `
+    radial-gradient(
+      circle at
+      ${center.x * 2 + bounds.width / 2}px
+      ${center.y * 2 + bounds.height / 2}px,
+      #ffffff55,
+      #0000000f
+    )
+  `;
+    }
+
+    $card.addEventListener('mouseenter', () => {
+      bounds = $card.getBoundingClientRect();
+      document.addEventListener('mousemove', rotateToMouse);
+    });
+
+    $card.addEventListener('mouseleave', () => {
+      document.removeEventListener('mousemove', rotateToMouse);
+      $card.style.transform = '';
+      $card.style.background = '';
+    });
+  </script>
+
+</body>
+
 </html>
