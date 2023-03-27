@@ -1,0 +1,45 @@
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+}
+
+body {
+  height: 100dvh;
+}
+
+.main-content {
+  margin-top: 56pt;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-nav ul {
+  display: flex;
+  gap: 12pt;
+}
+.home-nav ul li {
+  transition-duration: 0.3s;
+  transform: scale(1);
+}
+.home-nav ul li::after {
+  content: "";
+  position: absolute;
+  background: #dabd1d;
+  display: inline-block;
+  width: 0%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+.home-nav ul li:hover::after {
+  width: 100%;
+}/*# sourceMappingURL=home.css.map */
